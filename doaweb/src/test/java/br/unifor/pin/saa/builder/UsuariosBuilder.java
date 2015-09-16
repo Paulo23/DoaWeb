@@ -25,11 +25,6 @@ public class UsuariosBuilder {
 		return this;
 	}
 	
-	public UsuariosBuilder sendoPrimeiroAcesso(){
-		usuario.setPrimeiroAcesso(true);
-		return this;
-	}
-	
 	public UsuariosBuilder sendoAtivo(){
 		usuario.setAtivo(false);
 		return this;

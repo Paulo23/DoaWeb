@@ -36,9 +36,6 @@ public class Usuarios {
 	@Column(nullable = false)
 	private String senha;
 
-	@Column(name = "primeiro_acesso", nullable = false)
-	private boolean primeiroAcesso;
-
 	@Column(nullable = false)
 	private boolean ativo;
 
@@ -78,14 +75,6 @@ public class Usuarios {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public boolean isPrimeiroAcesso() {
-		return primeiroAcesso;
-	}
-
-	public void setPrimeiroAcesso(boolean primeiroAcesso) {
-		this.primeiroAcesso = primeiroAcesso;
 	}
 
 	public boolean isAtivo() {

@@ -23,7 +23,7 @@ import br.unifor.pin.doaweb.enums.TipoDoacao;
  */
 @Entity
 public class Campanhas implements Serializable {
-
+ 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="id_campanhas")

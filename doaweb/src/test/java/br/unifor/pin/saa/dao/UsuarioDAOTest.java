@@ -26,7 +26,6 @@ public class UsuarioDAOTest {
 		usuario.setNome("adriano");
 		usuario.setSenha("123456");
 		usuario.setEmail("adriano@gmail.com");
-		usuario.setPrimeiroAcesso(true);
 		usuario.setAtivo(false);
 		usuarioDAO.salvar(usuario);
 		

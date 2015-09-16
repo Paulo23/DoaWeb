@@ -29,7 +29,6 @@ public class UsuarioBO {
 	@RolesAllowed(value = { "INCLUIR_USUARIO" })
 	public void salvar(Usuarios usuario) {
 		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
 		usuarioDAO.salvar(usuario);
 	}
 

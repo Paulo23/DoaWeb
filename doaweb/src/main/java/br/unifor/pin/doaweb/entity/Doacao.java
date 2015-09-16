@@ -43,7 +43,7 @@ public class Doacao implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	private Usuarios usuario;
 
 	private static final long serialVersionUID = 1L;
 
@@ -83,11 +83,19 @@ public class Doacao implements Serializable {
 		this.campanha = campanhas;
 	}
 
-	public Usuario getUsuario() {
+	public Campanhas getCampanha() {
+		return campanha;
+	}
+
+	public void setCampanha(Campanhas campanha) {
+		this.campanha = campanha;
+	}
+
+	public Usuarios getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
 	}
 
