@@ -33,13 +33,13 @@ public class LoginManager {
 	private boolean existsEmail;
 
 	public String loggar() {
-		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmail(),
+		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmailUsuario(),
 				Encripta.encripta(this.usuario.getSenha()));
 		this.usuario = new Usuarios();
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
-			MessagesUtils.info("Bem vindo "+usuario.getNome());
+			MessagesUtils.info("Bem vindo "+usuario.getNomeUsuario());
 			return Navigation.SUCESSO;
 		} else {
 			existsEmail = false;

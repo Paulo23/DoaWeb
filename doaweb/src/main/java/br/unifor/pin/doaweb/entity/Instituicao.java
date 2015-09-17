@@ -8,7 +8,7 @@ import java.util.List;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Instituicao
+ * @author equipe.doaweb
  *
  */
 @Entity 

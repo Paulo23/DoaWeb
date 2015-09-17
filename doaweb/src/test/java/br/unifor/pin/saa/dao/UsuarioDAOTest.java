@@ -23,9 +23,9 @@ public class UsuarioDAOTest {
 	public void testSalvar() throws Exception {
 		
 		Usuarios usuario = new Usuarios();
-		usuario.setNome("adriano");
+		usuario.setNomeUsuario("adriano");
 		usuario.setSenha("123456");
-		usuario.setEmail("adriano@gmail.com");
+		usuario.setEmailUsuario("adriano@gmail.com");
 		usuario.setAtivo(false);
 		usuarioDAO.salvar(usuario);
 		

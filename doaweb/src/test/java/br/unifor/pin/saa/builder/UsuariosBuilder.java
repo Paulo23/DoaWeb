@@ -11,7 +11,7 @@ public class UsuariosBuilder {
 	}
 	
 	public UsuariosBuilder comNome(){
-		usuario.setNome("adriano patrick");
+		usuario.setNomeUsuario("adriano patrick");
 		return this;
 	}
 	
@@ -21,7 +21,7 @@ public class UsuariosBuilder {
 	}
 	
 	public UsuariosBuilder comEmail(){
-		usuario.setEmail("adriano@gmail.com");
+		usuario.setEmailUsuario("adriano@gmail.com");
 		return this;
 	}
 	

@@ -37,8 +37,8 @@ public class AtualizaUsuarioManager {
 	}
 	
 	public void limparDados(){
-		usuarioSelecionado.setNome("");
-		usuarioSelecionado.setEmail("");
+		usuarioSelecionado.setNomeUsuario("");
+		usuarioSelecionado.setEmailUsuario("");
 		usuarioSelecionado.setSenha("");
 		usuarioSelecionado.setAtivo(false);
 	}

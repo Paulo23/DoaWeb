@@ -33,8 +33,8 @@ public class CadUsuarioManager {
 	
 	public String salvar(){
 		Usuarios usuario = new Usuarios();
-		usuario.setNome(nome);
-		usuario.setEmail(email);
+		usuario.setNomeUsuario(nome);
+		usuario.setEmailUsuario(email);
 		usuario.setSenha(Encripta.encripta(senha));
 		Papeis p = usuarioBO.buscaPapelAdmin();
 		usuario.setPapeis(new ArrayList<Papeis>());

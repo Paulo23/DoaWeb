@@ -7,7 +7,7 @@ import java.lang.String;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: DadosBancarios
+ * @author equipe.doaweb
  *
  */
 @Entity

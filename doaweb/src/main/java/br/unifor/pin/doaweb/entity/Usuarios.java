@@ -1,5 +1,6 @@
 package br.unifor.pin.doaweb.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,12 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.unifor.pin.doaweb.entity.security.Papeis;
 
 /**
- * @author patrick.cunha
+ * @author equipe.doaweb
  * 
  */
 @Entity
@@ -25,13 +29,27 @@ public class Usuarios {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id_usuario")
 	private Integer id;
 
-	@Column(nullable = false)
-	private String nome;
+	@Column(name="nome_usuario", nullable=false)
+	private String nomeUsuario;
+	
+	@Column(name="nascimento_usuario", nullable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataNascimento;
 
-	@Column(unique = true, nullable = false)
-	private String email;
+	@Column(name="rg_usuario", nullable=false, unique=true)
+	private String rgUsuario;
+	
+	@Column(name="email_usuario", unique=true, nullable=false)
+	private String emailUsuario;
+	
+	@Column(name="enderco_usuario", nullable=false)
+	private String endUsuario;
+	
+	@Column(name="telefone_usuario", nullable=false)
+	private String telUsuario;
 
 	@Column(nullable = false)
 	private String senha;
@@ -45,6 +63,9 @@ public class Usuarios {
 		inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id") )
 	private List<Papeis> papeis;
 
+	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
+	private List<Doacao> doacoes;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -53,20 +74,52 @@ public class Usuarios {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
-	public String getEmail() {
-		return email;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getRgUsuario() {
+		return rgUsuario;
+	}
+
+	public void setRgUsuario(String rgUsuario) {
+		this.rgUsuario = rgUsuario;
+	}
+
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
+
+	public String getEndUsuario() {
+		return endUsuario;
+	}
+
+	public void setEndUsuario(String endUsuario) {
+		this.endUsuario = endUsuario;
+	}
+
+	public String getTelUsuario() {
+		return telUsuario;
+	}
+
+	public void setTelUsuario(String telUsuario) {
+		this.telUsuario = telUsuario;
 	}
 
 	public String getSenha() {
@@ -109,7 +162,7 @@ public class Usuarios {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((emailUsuario == null) ? 0 : emailUsuario.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -128,10 +181,10 @@ public class Usuarios {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuarios other = (Usuarios) obj;
-		if (email == null) {
-			if (other.email != null)
+		if (emailUsuario == null) {
+			if (other.emailUsuario != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!emailUsuario.equals(other.emailUsuario))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -143,7 +196,7 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nome=" + nome + ", email=" + email + ", papeis=" + papeis + "]";
+		return "Usuarios [id=" + id + ", nome=" + nomeUsuario + ", email=" + emailUsuario + ", papeis=" + papeis + "]";
 	}
 	
 }
