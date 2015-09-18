@@ -1,7 +1,5 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.io.Serializable;
-import java.lang.Long;
 import java.lang.String;
 import java.util.List;
 
@@ -12,94 +10,95 @@ import javax.persistence.*;
  *
  */
 @Entity 
-public class Instituicao implements Serializable {
+public class Instituicao{
  
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_instituicao")
-	private Long idInstituicao;
+	private Integer id;
 	
 	@Column(name="cnpj_instituicao", nullable = false, length = 14, updatable = false, unique = true)
-	private String cnpj;
+	private String cnpjInstituicao;
 	
-	@Column(name="nome_instituicao", nullable = false, length = 255)
-	private String nome;
+	@Column(name="nome_instituicao", nullable = false)
+	private String nomeInstituicao;
 	
-	@Column(name="endereco_instituicao", nullable = false, length = 255)
-	private String endereco;
+	@Column(name="endereco_instituicao", nullable = false)
+	private String endInstituicao;
 	
-	@Column(name="descricao_instituicao", nullable = false, length = 3500)
-	private String descricao;
+	@Column(name="descricao_instituicao", nullable = false)
+	private String descricaoInstituicao;
 	
-	@Column(name="telefone_instituicao", nullable = false, length = 11)
-	private String telefone;
+	@Column(name="telefone_instituicao", nullable = false, length = 15)
+	private String telInstituicao;
 	
-	@Column(name="email_instituicao", nullable = false, length = 255)
-	private String email;
+	@Column(name="email_instituicao", nullable = false)
+	private String emailInstituicao;
 	
-	@OneToMany(mappedBy = "instituicao", fetch=FetchType.LAZY)
-	private List<Campanhas> camapanhas;
+	@OneToMany(mappedBy = "instituicao", fetch=FetchType.EAGER)
+	private List<Campanhas> campanhas;
 	
 	@OneToOne
 	@JoinColumn(name="id_dadosBancarios")
 	private Instituicao instituicao;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCnpjInstituicao() {
+		return cnpjInstituicao;
+	}
+
+	public void setCnpjInstituicao(String cnpjInstituicao) {
+		this.cnpjInstituicao = cnpjInstituicao;
+	}
+
+	public String getNomeInstituicao() {
+		return nomeInstituicao;
+	}
+
+	public void setNomeInstituicao(String nomeInstituicao) {
+		this.nomeInstituicao = nomeInstituicao;
+	}
+
+	public String getEndInstituicao() {
+		return endInstituicao;
+	}
+
+	public void setEndInstituicao(String endInstituicao) {
+		this.endInstituicao = endInstituicao;
+	}
+
+	public String getDescricaoInstituicao() {
+		return descricaoInstituicao;
+	}
+
+	public void setDescricaoInstituicao(String descricaoInstituicao) {
+		this.descricaoInstituicao = descricaoInstituicao;
+	}
+
+	public String getTelInstituicao() {
+		return telInstituicao;
+	}
+
+	public void setTelInstituicao(String telInstituicao) {
+		this.telInstituicao = telInstituicao;
+	}
+
+	public String getEmailInstituicao() {
+		return emailInstituicao;
+	}
+
+	public void setEmailInstituicao(String emailInstituicao) {
+		this.emailInstituicao = emailInstituicao;
+	}
 	
-	private static final long serialVersionUID = 1L;
-
-	public Instituicao() {
-		super();
-	}
-
-	public Long getIdInstituicao() {
-		return this.idInstituicao;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCnpj() {
-		return this.cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
-	public String getEndereco() {
-		return this.endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public String getDescricao() {
-		return this.descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getTelefone() {
-		return this.telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
+	
 
 }

@@ -1,6 +1,5 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,14 +21,14 @@ import br.unifor.pin.doaweb.enums.TipoDoacao;
  *
  */
 @Entity
-public class Doacao implements Serializable {
+public class Doacao {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_doacao")
-	private Long IdDoacao;
+	private Integer id;
 
-	@Column(name="tipo_doacao", nullable = false, updatable = false)
+	@Column(name = "tipo_doacao", nullable = false, updatable = false)
 	@Enumerated(EnumType.ORDINAL)
 	private TipoDoacao tipoDeDoacao;
 
@@ -40,23 +39,17 @@ public class Doacao implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_campanhas")
 	private Campanhas campanha;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuarios usuario;
 
-	private static final long serialVersionUID = 1L;
-
-	public Doacao() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
-	public Long getIdDoacao() {
-		return IdDoacao;
-	}
-
-	public void setIdDoacao(Long idDoacao) {
-		IdDoacao = idDoacao;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public TipoDoacao getTipoDeDoacao() {
@@ -73,14 +66,6 @@ public class Doacao implements Serializable {
 
 	public void setDataDoacao(Date dataDoacao) {
 		this.dataDoacao = dataDoacao;
-	}
-
-	public Campanhas getCampanhas() {
-		return campanha;
-	}
-
-	public void setCampanhas(Campanhas campanhas) {
-		this.campanha = campanhas;
 	}
 
 	public Campanhas getCampanha() {

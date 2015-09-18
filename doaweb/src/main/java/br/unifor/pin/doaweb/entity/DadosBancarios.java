@@ -1,6 +1,5 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 
@@ -11,41 +10,39 @@ import javax.persistence.*;
  *
  */
 @Entity
-public class DadosBancarios implements Serializable {
+public class DadosBancarios {
 
-	@Id 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="id_dadosBancarios")
-	private Integer idDadosBancarios;
-	
-	@Column(name="nome_banco__dadosBancarios", nullable = false, length = 255)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_dadosBancarios")
+	private Integer id;
+
+	@Column(name = "nomeBanco_dadosBancarios", nullable = false)
 	private String nomeBanco;
-	
-	@Column(name="operacao_dadosBancarios", nullable = true, length = 10)
+
+	@Column(name = "operacao_dadosBancarios", nullable = true, length = 10)
 	private String operacao;
-	
-	@Column(name="agencia_dadosBancarios", nullable = false, length = 50)
+
+	@Column(name = "agencia_dadosBancarios", nullable = false, length = 50)
 	private String agencia;
-	
-	@Column(name="conta_dadosBancarios", nullable = false, length = 50)
-	private String conta;	
-	
-	@OneToOne(mappedBy="instituicao")
+
+	@Column(name = "conta_dadosBancarios", nullable = false, length = 50)
+	private String conta;
+
+	@OneToOne(mappedBy = "instituicao")
 	@JoinColumn(name = "id_instituicao")
 	private Instituicao instituicao;
 
-	private static final long serialVersionUID = 1L;
-
-	public DadosBancarios() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
-	public Integer getIdDadosBancarios() {
-		return this.idDadosBancarios;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNomeBanco() {
-		return this.nomeBanco;
+		return nomeBanco;
 	}
 
 	public void setNomeBanco(String nomeBanco) {
@@ -53,7 +50,7 @@ public class DadosBancarios implements Serializable {
 	}
 
 	public String getOperacao() {
-		return this.operacao;
+		return operacao;
 	}
 
 	public void setOperacao(String operacao) {
@@ -61,7 +58,7 @@ public class DadosBancarios implements Serializable {
 	}
 
 	public String getAgencia() {
-		return this.agencia;
+		return agencia;
 	}
 
 	public void setAgencia(String agencia) {
@@ -69,11 +66,19 @@ public class DadosBancarios implements Serializable {
 	}
 
 	public String getConta() {
-		return this.conta;
+		return conta;
 	}
 
 	public void setConta(String conta) {
 		this.conta = conta;
+	}
+
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
 	}
 
 }

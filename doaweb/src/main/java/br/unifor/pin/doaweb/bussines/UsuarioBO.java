@@ -77,8 +77,8 @@ public class UsuarioBO {
 		}
 		usuarioDAO.excluir(usuario);
 	}
-	
-	public Papeis buscaPapelAdmin(){
+
+	public Papeis buscaPapelAdmin() {
 		return usuarioDAO.buscaPapel();
 	}
 

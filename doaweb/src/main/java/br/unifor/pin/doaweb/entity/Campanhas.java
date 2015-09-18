@@ -1,8 +1,6 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,44 +20,42 @@ import br.unifor.pin.doaweb.enums.TipoDoacao;
  *
  */
 @Entity
-public class Campanhas implements Serializable {
- 
+public class Campanhas {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="id_campanhas")
-	private Long idCampanhas;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_campanhas")
+	private Integer id;
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inicio_campanhas", nullable = false, updatable = false)
+	@Column(name = "data_inicio_campanhas", nullable = false, updatable = false)
 	private Date dataInicioCampanhas;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_termino_campanhas", nullable = false, updatable = false)
+	@Column(name = "data_termino_campanhas", nullable = false, updatable = false)
 	private Date dataTerminoCampanhas;
-	
-	@Column(name="tipo_campanhas", nullable = false, updatable = false)
+
+	@Column(name = "tipo_campanhas", nullable = false, updatable = false)
 	@Enumerated(EnumType.ORDINAL)
 	private TipoDoacao tipo;
-	
-	@Column(name="descricao_campanhas", nullable = false)
+
+	@Column(name = "descricao_campanhas", nullable = false)
 	private String descricao;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_instituicao")
 	private Instituicao instituicao;
-	
-	private static final long serialVersionUID = 1L;
 
-	public Campanhas() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
-	public Long getIdCampanhas() {
-		return this.idCampanhas;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Date getDataInicioCampanhas() {
-		return this.dataInicioCampanhas;
+		return dataInicioCampanhas;
 	}
 
 	public void setDataInicioCampanhas(Date dataInicioCampanhas) {
@@ -67,7 +63,7 @@ public class Campanhas implements Serializable {
 	}
 
 	public Date getDataTerminoCampanhas() {
-		return this.dataTerminoCampanhas;
+		return dataTerminoCampanhas;
 	}
 
 	public void setDataTerminoCampanhas(Date dataTerminoCampanhas) {
@@ -83,11 +79,21 @@ public class Campanhas implements Serializable {
 	}
 
 	public String getDescricao() {
-		return this.descricao;
+		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+	
+	
 
 }

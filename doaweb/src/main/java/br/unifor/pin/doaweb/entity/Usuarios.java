@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,7 +23,6 @@ import br.unifor.pin.doaweb.entity.security.Papeis;
  * 
  */
 @Entity
-@Table(name = "usuarios")
 public class Usuarios {
 
 	@Id
@@ -45,7 +43,7 @@ public class Usuarios {
 	@Column(name="email_usuario", unique=true, nullable=false)
 	private String emailUsuario;
 	
-	@Column(name="enderco_usuario", nullable=false)
+	@Column(name="endereco_usuario", nullable=false)
 	private String endUsuario;
 	
 	@Column(name="telefone_usuario", nullable=false)
