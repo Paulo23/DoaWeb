@@ -1,9 +1,11 @@
 package br.unifor.pin.doaweb.manager.usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.entity.security.Papeis;
+import br.unifor.pin.doaweb.enums.TipoUsuario;
 import br.unifor.pin.doaweb.utils.Encripta;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
@@ -30,11 +33,12 @@ public class CadUsuarioManager {
 	private String nome;
 	private String email;
 	private String senha;
+	private TipoUsuario tipoUsuario;
 	
 	public String salvar(){
 		Usuarios usuario = new Usuarios();
-		usuario.setNomeUsuario(nome);
-		usuario.setEmailUsuario(email);
+//		usuario.setNome(nome);
+		usuario.setEmail(email);
 		usuario.setSenha(Encripta.encripta(senha));
 		Papeis p = usuarioBO.buscaPapelAdmin();
 		usuario.setPapeis(new ArrayList<Papeis>());
@@ -50,6 +54,15 @@ public class CadUsuarioManager {
 		this.limpaDados();
 		
 		return Navigation.SUCESSO;
+	}
+	
+	public List<SelectItem> getTipoUsuarios(){
+		List<SelectItem> items = new ArrayList<SelectItem>();
+		items.add(new SelectItem(null, "Selecione um Tipo."));
+		for (TipoUsuario tipoUsuario : TipoUsuario.values()) {
+			items.add(new SelectItem(tipoUsuario, tipoUsuario.getDescricao()));
+		}
+		return items;
 	}
 			
 	public void limpaDados(){
@@ -77,6 +90,13 @@ public class CadUsuarioManager {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 }

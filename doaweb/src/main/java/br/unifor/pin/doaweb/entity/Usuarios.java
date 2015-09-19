@@ -1,53 +1,44 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Table;
 
 import br.unifor.pin.doaweb.entity.security.Papeis;
+import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 /**
- * @author equipe.doaweb
+ * @author patrick.cunha
  * 
  */
 @Entity
+@Table(name = "usuarios")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.INTEGER)
 public class Usuarios {
 
 	@Id
+	@Column(name="usuario_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id_usuario")
 	private Integer id;
 
-	@Column(name="nome_usuario", nullable=false)
-	private String nomeUsuario;
-	
-	@Column(name="nascimento_usuario", nullable=false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataNascimento;
-
-	@Column(name="rg_usuario", nullable=false, unique=true)
-	private String rgUsuario;
-	
-	@Column(name="email_usuario", unique=true, nullable=false)
-	private String emailUsuario;
-	
-	@Column(name="endereco_usuario", nullable=false)
-	private String endUsuario;
-	
-	@Column(name="telefone_usuario", nullable=false)
-	private String telUsuario;
+	@Column(unique = true, nullable = false)
+	private String email;
 
 	@Column(nullable = false)
 	private String senha;
@@ -56,14 +47,13 @@ public class Usuarios {
 	private boolean ativo;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "perfis", 
-		joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id") , 
-		inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id") )
+	@JoinTable(name = "perfis", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id"))
 	private List<Papeis> papeis;
 
-	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
-	private List<Doacao> doacoes;
-	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "tipo_usuario", nullable = false)
+	private TipoUsuario tipoUsuario;
+
 	public Integer getId() {
 		return id;
 	}
@@ -72,52 +62,12 @@ public class Usuarios {
 		this.id = id;
 	}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getRgUsuario() {
-		return rgUsuario;
-	}
-
-	public void setRgUsuario(String rgUsuario) {
-		this.rgUsuario = rgUsuario;
-	}
-
-	public String getEmailUsuario() {
-		return emailUsuario;
-	}
-
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
-	}
-
-	public String getEndUsuario() {
-		return endUsuario;
-	}
-
-	public void setEndUsuario(String endUsuario) {
-		this.endUsuario = endUsuario;
-	}
-
-	public String getTelUsuario() {
-		return telUsuario;
-	}
-
-	public void setTelUsuario(String telUsuario) {
-		this.telUsuario = telUsuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
@@ -134,6 +84,14 @@ public class Usuarios {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	/**
@@ -160,7 +118,7 @@ public class Usuarios {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((emailUsuario == null) ? 0 : emailUsuario.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -179,10 +137,10 @@ public class Usuarios {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuarios other = (Usuarios) obj;
-		if (emailUsuario == null) {
-			if (other.emailUsuario != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!emailUsuario.equals(other.emailUsuario))
+		} else if (!email.equals(other.email))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -194,7 +152,8 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nome=" + nomeUsuario + ", email=" + emailUsuario + ", papeis=" + papeis + "]";
+		return "Usuarios [id=" + id + ", email=" + email
+				+ ", papeis=" + papeis + "]";
 	}
-	
+
 }

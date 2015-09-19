@@ -14,7 +14,7 @@ public class DadosBancarios {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_dadosBancarios")
+	@Column(name = "id_dados_bancarios")
 	private Integer id;
 
 	@Column(name = "nomeBanco_dadosBancarios", nullable = false)
@@ -29,9 +29,9 @@ public class DadosBancarios {
 	@Column(name = "conta_dadosBancarios", nullable = false, length = 50)
 	private String conta;
 
-	@OneToOne(mappedBy = "instituicao")
-	@JoinColumn(name = "id_instituicao")
-	private Instituicao instituicao;
+//	@OneToOne(mappedBy = "dadosBancarios")
+//	@JoinColumn(name = "id_instituicao")
+//	private Instituicao instituicao;
 
 	public Integer getId() {
 		return id;
@@ -73,12 +73,12 @@ public class DadosBancarios {
 		this.conta = conta;
 	}
 
-	public Instituicao getInstituicao() {
-		return instituicao;
-	}
-
-	public void setInstituicao(Instituicao instituicao) {
-		this.instituicao = instituicao;
-	}
+//	public Instituicao getInstituicao() {
+//		return instituicao;
+//	}
+//
+//	public void setInstituicao(Instituicao instituicao) {
+//		this.instituicao = instituicao;
+//	}
 
 }

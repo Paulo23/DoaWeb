@@ -1,104 +1,52 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.lang.String;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 /**
  * @author equipe.doaweb
  *
  */
 @Entity 
-public class Instituicao{
- 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id_instituicao")
-	private Integer id;
+@DiscriminatorValue("1")
+public class Instituicao extends Usuarios {
 	
 	@Column(name="cnpj_instituicao", nullable = false, length = 14, updatable = false, unique = true)
-	private String cnpjInstituicao;
+	private String cnpj;
 	
-	@Column(name="nome_instituicao", nullable = false)
-	private String nomeInstituicao;
-	
-	@Column(name="endereco_instituicao", nullable = false)
-	private String endInstituicao;
-	
-	@Column(name="descricao_instituicao", nullable = false)
-	private String descricaoInstituicao;
-	
-	@Column(name="telefone_instituicao", nullable = false, length = 15)
-	private String telInstituicao;
-	
-	@Column(name="email_instituicao", nullable = false)
-	private String emailInstituicao;
+	@Column(name="razao_social", nullable = false)
+	private String razaoSocial;
 	
 	@OneToMany(mappedBy = "instituicao", fetch=FetchType.EAGER)
 	private List<Campanhas> campanhas;
 	
-	@OneToOne
-	@JoinColumn(name="id_dadosBancarios")
-	private Instituicao instituicao;
-
-	public Integer getId() {
-		return id;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
-	public String getCnpjInstituicao() {
-		return cnpjInstituicao;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setCnpjInstituicao(String cnpjInstituicao) {
-		this.cnpjInstituicao = cnpjInstituicao;
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
 	}
 
-	public String getNomeInstituicao() {
-		return nomeInstituicao;
+	public List<Campanhas> getCampanhas() {
+		return campanhas;
 	}
 
-	public void setNomeInstituicao(String nomeInstituicao) {
-		this.nomeInstituicao = nomeInstituicao;
+	public void setCampanhas(List<Campanhas> campanhas) {
+		this.campanhas = campanhas;
 	}
-
-	public String getEndInstituicao() {
-		return endInstituicao;
-	}
-
-	public void setEndInstituicao(String endInstituicao) {
-		this.endInstituicao = endInstituicao;
-	}
-
-	public String getDescricaoInstituicao() {
-		return descricaoInstituicao;
-	}
-
-	public void setDescricaoInstituicao(String descricaoInstituicao) {
-		this.descricaoInstituicao = descricaoInstituicao;
-	}
-
-	public String getTelInstituicao() {
-		return telInstituicao;
-	}
-
-	public void setTelInstituicao(String telInstituicao) {
-		this.telInstituicao = telInstituicao;
-	}
-
-	public String getEmailInstituicao() {
-		return emailInstituicao;
-	}
-
-	public void setEmailInstituicao(String emailInstituicao) {
-		this.emailInstituicao = emailInstituicao;
-	}
-	
-	
-	
 
 }

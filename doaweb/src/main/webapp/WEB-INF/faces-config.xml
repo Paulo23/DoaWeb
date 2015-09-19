@@ -5,7 +5,7 @@
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
-	
+
 	<!-- Login Inicio -->
 	<navigation-rule>
 		<from-view-id>/pages/login/login.xhtml</from-view-id>
@@ -65,6 +65,9 @@
 		</navigation-case>
 	</navigation-rule>
 	<!-- Usuarios Fim -->
+
+
+	<!-- Converters -->
 
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>

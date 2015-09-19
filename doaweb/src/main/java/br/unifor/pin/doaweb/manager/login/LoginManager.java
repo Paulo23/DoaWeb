@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
+import br.unifor.pin.doaweb.entity.Doadores;
+import br.unifor.pin.doaweb.entity.Instituicao;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Encripta;
@@ -33,19 +35,27 @@ public class LoginManager {
 	private boolean existsEmail;
 
 	public String loggar() {
-		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmailUsuario(),
+		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmail(),
 				Encripta.encripta(this.usuario.getSenha()));
 		this.usuario = new Usuarios();
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
-			MessagesUtils.info("Bem vindo "+usuario.getNomeUsuario());
+			if(usuario instanceof Doadores) {
+				MessagesUtils.info("Bem vindo "+((Doadores)usuario).getNome());
+			} else if (usuario instanceof Instituicao) {
+				MessagesUtils.info("Bem vindo "+((Instituicao)usuario).getRazaoSocial());
+			}
 			return Navigation.SUCESSO;
 		} else {
 			existsEmail = false;
 			MessagesUtils.error("O e-mail ou a senha inseridos estão incorretos.");
 			return Navigation.FRACASSO;
 		}
+	}
+	
+	public String preparaSalvar(){
+		return Navigation.CADASTRO;
 	}
 
 	/**

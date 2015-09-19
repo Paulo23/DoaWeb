@@ -41,4 +41,19 @@
     TARGET="rules:#pages#usuario#cadUsuario.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#login#login.xhtml"
+  PATH="/pages/login/login.xhtml" SHAPE="64,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#login#login.xhtml:0" NAME="item"
+   PATH="/pages/login/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#pages#usuario#listUsuario.xhtml"
+    NAME="output" PATH="/pages/usuario/listUsuario.xhtml"
+    TARGET="rules:#pages#usuario#listUsuario.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fracasso::#pages#login#login.xhtml"
+    NAME="output1" PATH="/pages/login/login.xhtml"
+    TARGET="rules:#pages#login#login.xhtml" TITLE="fracasso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastro::#pages#usuario#cadUsuario.xhtml"
+    NAME="output2" PATH="/pages/usuario/cadUsuario.xhtml"
+    TARGET="rules:#pages#usuario#cadUsuario.xhtml" TITLE="cadastro" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

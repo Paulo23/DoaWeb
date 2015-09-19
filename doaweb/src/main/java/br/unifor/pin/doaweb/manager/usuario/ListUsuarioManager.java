@@ -37,7 +37,6 @@ public class ListUsuarioManager {
 	}
 	
 	public String preparaAtualizar(Usuarios usuario){
-		System.out.println(usuario.getNomeUsuario());
 		return null;
 	}
 	
