@@ -1,25 +1,18 @@
 package br.unifor.pin.doaweb.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import br.unifor.pin.doaweb.entity.security.Papeis;
 import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 /**
@@ -45,10 +38,6 @@ public class Usuarios {
 
 	@Column(nullable = false)
 	private boolean ativo;
-
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "perfis", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id"))
-	private List<Papeis> papeis;
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "tipo_usuario", nullable = false)
@@ -94,21 +83,6 @@ public class Usuarios {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	/**
-	 * @return the papeis
-	 */
-	public List<Papeis> getPapeis() {
-		return papeis;
-	}
-
-	/**
-	 * @param papeis
-	 *            the papeis to set
-	 */
-	public void setPapeis(List<Papeis> papeis) {
-		this.papeis = papeis;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -152,8 +126,7 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", email=" + email
-				+ ", papeis=" + papeis + "]";
+		return "Usuarios [id=" + id + ", email=" + email + "]";
 	}
 
 }

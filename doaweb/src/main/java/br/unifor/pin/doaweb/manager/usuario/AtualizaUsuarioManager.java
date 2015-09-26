@@ -40,7 +40,7 @@ public class AtualizaUsuarioManager {
 //		usuarioSelecionado.setNome("");
 		usuarioSelecionado.setEmail("");
 		usuarioSelecionado.setSenha("");
-		usuarioSelecionado.setAtivo(false);
+//		usuarioSelecionado.setAtivo(false);
 	}
 
 	public Usuarios getUsuarioSelecionado() {

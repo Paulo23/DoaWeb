@@ -10,15 +10,15 @@ import javax.persistence.Entity;
 @DiscriminatorValue("0")
 public class Doadores extends Usuarios {
 	
-	@Column(nullable=false)
+	@Column
 	private String nome;
 
-	@Column(name = "data_nascimento", nullable = false)
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
-	@Column(name = "cpf", length = 14, nullable = false, unique = true)
+	@Column(name = "cpf", length = 14, unique = true )
 	private String cpf;
-
+	
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

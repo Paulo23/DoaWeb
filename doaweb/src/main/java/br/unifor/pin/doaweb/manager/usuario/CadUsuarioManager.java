@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.abstractfactory.UsuarioFactory;
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
+import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.enums.TipoUsuario;
 import br.unifor.pin.doaweb.utils.Navigation;
@@ -50,18 +51,28 @@ public class CadUsuarioManager {
 		
 		Usuarios usuario = UsuarioFactory.obtemFactory(tipoUsuario)
 				.criaUsuario();
-		usuario.setEmail(email);
-		usuario.setSenha(senha);
+		
+		usuario.setEmail(getEmail());
+		usuario.setSenha(getSenha());
 
+		if(usuario instanceof Doadores){
+			Doadores doador = (Doadores) usuario;
+			doador.setCpf(getCpf());
+			doador.setDataNascimento(getDataNascimento());
+			doador.setNome(getNome());
+			this.usuarioBO.salvar(doador);
+		} else {
+//			Instituicao instituicao = (Instituicao) usuario;
+//			instituicao.setCnpj(getCnpj());
+//			instituicao.setRazaoSocial(getRazaoSocial());
+//			this.usuarioBO
+		}
+		
 		return Navigation.SUCESSO;
 	}
 
-	// public void handleChange(AjaxBehaviorEvent event){
-	// }
-
 	public String preparaSalvar() {
 		this.limpaDados();
-
 		return Navigation.CADASTRO;
 	}
 

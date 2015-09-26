@@ -36,9 +36,6 @@ public class Papeis implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String nome;
 
-	@ManyToMany(mappedBy = "papeis")
-	private List<Usuarios> usuarios;
-
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "configuracoes", 
 		joinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id"), 
@@ -75,20 +72,6 @@ public class Papeis implements Serializable {
 		this.nome = nome;
 	}
 	
-	/**
-	 * @return the usuarios
-	 */
-	public List<Usuarios> getUsuarios() {
-		return usuarios;
-	}
-
-	/**
-	 * @param usuarios the usuarios to set
-	 */
-	public void setUsuarios(List<Usuarios> usuarios) {
-		this.usuarios = usuarios;
-	}
-
 	/**
 	 * @return the permissoes
 	 */

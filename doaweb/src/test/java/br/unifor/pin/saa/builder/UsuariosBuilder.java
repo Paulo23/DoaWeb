@@ -24,7 +24,7 @@ public class UsuariosBuilder {
 	}
 	
 	public UsuariosBuilder sendoAtivo(){
-		usuario.setAtivo(false);
+//		usuario.setAtivo(false);
 		return this;
 	}
 	

@@ -3,14 +3,14 @@ package br.unifor.pin.doaweb.bussines;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
 import br.unifor.pin.doaweb.aspectj.PermitAll;
-import br.unifor.pin.doaweb.aspectj.RolesAllowed;
-import br.unifor.pin.doaweb.dao.UsuarioDAO;
+import br.unifor.pin.doaweb.dao.DoadoresDAO;
+import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.entity.security.Papeis;
 import br.unifor.pin.doaweb.exceptions.DAOException;
@@ -20,39 +20,40 @@ import br.unifor.pin.doaweb.exceptions.DAOException;
  * 
  */
 @Loggable
-@Service
+@Component
+@Transactional(propagation=Propagation.REQUIRED)
 public class UsuarioBO {
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
-
-	@RolesAllowed(value = { "INCLUIR_USUARIO" })
+	private DoadoresDAO doadoresDAO;
+	
+	public void salvar(Doadores doador) {
+//		doador.setAtivo(true);
+		doadoresDAO.salvar(doador);
+	}
+	
 	public void salvar(Usuarios usuario) {
-		usuario.setAtivo(false);
-		usuarioDAO.salvar(usuario);
+//		usuario.setAtivo(true);
+		doadoresDAO.salvar(usuario);
 	}
 
-	@RolesAllowed(value = { "ALTERAR_USUARIO" })
 	public void atualizar(Usuarios usuario) {
-		usuarioDAO.atualizar(usuario);
+		doadoresDAO.atualizar(usuario);
 	}
 
-	@PermitAll
 	@Loggable(enable = false)
 	public Usuarios loggar(String email, String senha) {
-		return usuarioDAO.buscarPorEmailSenha(email, senha);
+		return doadoresDAO.buscarPorEmailSenha(email, senha);
 	}
 
-	@PermitAll
 	@Loggable(enable = false)
 	public Usuarios buscarUsuarioPorEmail(String email) {
-		return usuarioDAO.buscarPorEmail(email);
+		return doadoresDAO.buscarPorEmail(email);
 	}
 
-	@RolesAllowed(value = { "LISTAR_USUARIO" })
 	@Loggable(enable = false)
 	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
+		List<Usuarios> usuarios = doadoresDAO.listarPorNome(nome);
 		return usuarios;
 	}
 
@@ -60,26 +61,25 @@ public class UsuarioBO {
 	@Loggable(enable = false)
 	public Usuarios buscarPorId(Integer id) {
 		try {
-			return usuarioDAO.buscaPorId(id);
+			return doadoresDAO.buscaPorId(id);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	@RolesAllowed(value = { "EXCLUIR_USUARIO" })
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void excluir(Usuarios usuario) {
 		try {
-			usuario = usuarioDAO.buscaPorId(usuario.getId());
+			usuario = doadoresDAO.buscaPorId(usuario.getId());
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
-		usuarioDAO.excluir(usuario);
+		doadoresDAO.excluir(usuario);
 	}
 
 	public Papeis buscaPapelAdmin() {
-		return usuarioDAO.buscaPapel();
+		return doadoresDAO.buscaPapel();
 	}
 
 }

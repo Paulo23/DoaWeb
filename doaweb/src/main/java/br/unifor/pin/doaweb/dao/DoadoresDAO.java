@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.entity.security.Papeis;
 import br.unifor.pin.doaweb.exceptions.DAOException;
@@ -25,15 +26,19 @@ import br.unifor.pin.doaweb.exceptions.DAOException;
  */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
-public class UsuarioDAO {
+public class DoadoresDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void salvar(Usuarios usuario) {
+	public void salvar(Doadores doador){
+		entityManager.persist(doador);
+	}
+	
+	public void salvar(Usuarios usuario){
 		entityManager.persist(usuario);
 	}
-
+	
 	public void atualizar(Usuarios usuario) {
 		entityManager.merge(usuario);
 	}
