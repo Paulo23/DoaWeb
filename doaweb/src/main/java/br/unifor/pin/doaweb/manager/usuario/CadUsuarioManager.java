@@ -14,8 +14,11 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.doaweb.abstractfactory.UsuarioFactory;
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Doadores;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.enums.TipoUsuario;
+import br.unifor.pin.doaweb.utils.Encripta;
+import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 
@@ -53,19 +56,21 @@ public class CadUsuarioManager {
 				.criaUsuario();
 		
 		usuario.setEmail(getEmail());
-		usuario.setSenha(getSenha());
+		usuario.setSenha(Encripta.encripta(getSenha()));
 
 		if(usuario instanceof Doadores){
-			Doadores doador = (Doadores) usuario;
-			doador.setCpf(getCpf());
-			doador.setDataNascimento(getDataNascimento());
-			doador.setNome(getNome());
-			this.usuarioBO.salvar(doador);
+			((Doadores) usuario).setCpf(getCpf());
+			((Doadores) usuario).setDataNascimento(getDataNascimento());
+			((Doadores) usuario).setNome(getNome());
 		} else {
-//			Instituicao instituicao = (Instituicao) usuario;
-//			instituicao.setCnpj(getCnpj());
-//			instituicao.setRazaoSocial(getRazaoSocial());
-//			this.usuarioBO
+			((Instituicoes) usuario).setCnpj(getCnpj());
+			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
+		}
+		try {
+			this.usuarioBO.salvar(usuario);
+			MessagesUtils.info("Usuário cadastrado com sucesso!");
+		} catch (Exception e) {
+			MessagesUtils.error(e.getMessage());
 		}
 		
 		return Navigation.SUCESSO;

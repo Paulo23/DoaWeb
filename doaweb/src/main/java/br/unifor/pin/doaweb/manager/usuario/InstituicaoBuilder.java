@@ -1,13 +1,13 @@
 package br.unifor.pin.doaweb.manager.usuario;
 
 
-import br.unifor.pin.doaweb.entity.Instituicao;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 
 public class InstituicaoBuilder extends UsuarioBuilder {
 
 	public InstituicaoBuilder(CadUsuarioManager cadUsuarioManager) {
 		super(cadUsuarioManager);
-		usuario = new Instituicao();
+		usuario = new Instituicoes();
 	}
 
 	@Override

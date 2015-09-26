@@ -4,16 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-
-import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 /**
  * @author patrick.cunha
@@ -38,10 +34,6 @@ public class Usuarios {
 
 	@Column(nullable = false)
 	private boolean ativo;
-
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "tipo_usuario", nullable = false)
-	private TipoUsuario tipoUsuario;
 
 	public Integer getId() {
 		return id;
@@ -73,14 +65,6 @@ public class Usuarios {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 
 	/*

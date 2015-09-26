@@ -4,9 +4,6 @@
 package br.unifor.pin.doaweb.aspectj;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.entity.Usuarios;
-import br.unifor.pin.doaweb.entity.security.Papeis;
-import br.unifor.pin.doaweb.entity.security.Permissoes;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 
 /**
@@ -64,38 +59,38 @@ public class SecurityConfig {
 //			}
 //		}
 
-		RolesAllowed permissoesDoMetodo = metodo
-				.getAnnotation(RolesAllowed.class) != null ? metodo
-				.getAnnotation(RolesAllowed.class) : metodo.getDeclaringClass()
-				.getAnnotation(RolesAllowed.class);
-				
-		if(permissoesDoMetodo != null){
-			final List<String> permissoesRequeridas = new ArrayList<String>(Arrays.asList(permissoesDoMetodo.value()));
-			final List<String> permissoesDoUsuario = this.retornaPermissoesDoUsuario(usuario);
-			//interseccao entre as listas
-			permissoesRequeridas.retainAll(permissoesDoUsuario);
-			if(permissoesRequeridas.size() > 0){
-				return;
-			}
-		} else {
-			this.dispararAcessoNegado();
-		}
-
-	}
-
-	/**
-	 * @param usuario
-	 * @return Lista de permissoes do usuario
-	 */
-	private List<String> retornaPermissoesDoUsuario(Usuarios usuario) {
-		List<String> permissoesDoUsuario = new ArrayList<String>();
-//		for (Papeis papel : usuario.getPapeis()) {
-//			for (Permissoes permissao : papel.getPermissoes()) {
-//				permissoesDoUsuario.add(permissao.getPermissao());
+//		RolesAllowed permissoesDoMetodo = metodo
+//				.getAnnotation(RolesAllowed.class) != null ? metodo
+//				.getAnnotation(RolesAllowed.class) : metodo.getDeclaringClass()
+//				.getAnnotation(RolesAllowed.class);
+//				
+//		if(permissoesDoMetodo != null){
+//			final List<String> permissoesRequeridas = new ArrayList<String>(Arrays.asList(permissoesDoMetodo.value()));
+//			final List<String> permissoesDoUsuario = this.retornaPermissoesDoUsuario(usuario);
+//			//interseccao entre as listas
+//			permissoesRequeridas.retainAll(permissoesDoUsuario);
+//			if(permissoesRequeridas.size() > 0){
+//				return;
 //			}
+//		} else {
+//			this.dispararAcessoNegado();
 //		}
-		return permissoesDoUsuario;
+
 	}
+
+//	/**
+//	 * @param usuario
+//	 * @return Lista de permissoes do usuario
+//	 */
+//	private List<String> retornaPermissoesDoUsuario(Usuarios usuario) {
+//		List<String> permissoesDoUsuario = new ArrayList<String>();
+////		for (Papeis papel : usuario.getPapeis()) {
+////			for (Permissoes permissao : papel.getPermissoes()) {
+////				permissoesDoUsuario.add(permissao.getPermissao());
+////			}
+////		}
+//		return permissoesDoUsuario;
+//	}
 
 	/**
 	 * 

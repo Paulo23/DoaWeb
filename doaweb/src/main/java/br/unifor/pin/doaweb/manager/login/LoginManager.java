@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Doadores;
-import br.unifor.pin.doaweb.entity.Instituicao;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Encripta;
@@ -43,8 +43,8 @@ public class LoginManager {
 			existsEmail = true;
 			if(usuario instanceof Doadores) {
 				MessagesUtils.info("Bem vindo "+((Doadores)usuario).getNome());
-			} else if (usuario instanceof Instituicao) {
-				MessagesUtils.info("Bem vindo "+((Instituicao)usuario).getRazaoSocial());
+			} else if (usuario instanceof Instituicoes) {
+				MessagesUtils.info("Bem vindo "+((Instituicoes)usuario).getRazaoSocial());
 			}
 			return Navigation.SUCESSO;
 		} else {
