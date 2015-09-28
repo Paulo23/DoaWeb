@@ -1,7 +1,5 @@
 package br.unifor.pin.doaweb.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -15,9 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
-import br.unifor.pin.doaweb.entity.security.Papeis;
 import br.unifor.pin.doaweb.exceptions.DAOException;
 
 /**
@@ -26,13 +22,13 @@ import br.unifor.pin.doaweb.exceptions.DAOException;
  */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
-public class DoadoresDAO {
+public class UsuariosDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void salvar(Doadores doador){
-		entityManager.persist(doador);
+	public void salvar(Usuarios usuario){
+		entityManager.persist(usuario);
 	}
 	
 	public void atualizar(Usuarios usuario) {
@@ -77,19 +73,6 @@ public class DoadoresDAO {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Usuarios> listarPorNome(String nome) {
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder
-				.createQuery(Usuarios.class);
-		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		criteriaQuery.where(criteriaBuilder.like(usuarios.<String> get("nome"),
-				"%" + nome + "%"));
-
-		Query query = entityManager.createQuery(criteriaQuery);
-		return query.getResultList();
-	}
-
 	public Usuarios buscaPorId(Integer id) throws DAOException {
 		String jpql = "select u from Usuarios u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);
@@ -101,10 +84,6 @@ public class DoadoresDAO {
 			return null;
 		}
 
-	}
-
-	public Papeis buscaPapel() {
-		return entityManager.find(Papeis.class, 2);
 	}
 
 }

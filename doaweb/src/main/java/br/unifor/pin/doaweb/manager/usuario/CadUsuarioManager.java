@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.abstractfactory.UsuarioFactory;
+import br.unifor.pin.doaweb.bussines.InstituicaoBO;
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
@@ -33,6 +34,8 @@ public class CadUsuarioManager {
 
 	@Autowired
 	private UsuarioBO usuarioBO;
+	@Autowired
+	private InstituicaoBO instituicaoBO;
 	@Autowired
 	private ListUsuarioManager listUsuario;
 
@@ -66,6 +69,7 @@ public class CadUsuarioManager {
 			((Instituicoes) usuario).setCnpj(getCnpj());
 			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
 		}
+		
 		try {
 			this.usuarioBO.salvar(usuario);
 			MessagesUtils.info("Usuário cadastrado com sucesso!");

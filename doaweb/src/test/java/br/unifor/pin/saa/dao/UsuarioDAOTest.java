@@ -27,7 +27,7 @@ public class UsuarioDAOTest {
 		doador.setSenha("123456");
 		doador.setEmail("adriano@gmail.com");
 		doador.setAtivo(false);
-		usuarioDAO.salvar(doador);
+		//usuarioDAO.salvar(doador);
 		
 		Assert.assertNotNull(doador.getId());
 		System.out.println(doador.getId());
