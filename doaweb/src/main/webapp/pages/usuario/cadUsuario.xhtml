@@ -73,7 +73,7 @@
 				<h:panelGrid id="gridInstituicao" columns="4" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
 
-					<p:outputLabel value="Razão Social: " />
+					<p:outputLabel value="Razão Social:  " />
 					<font color="red">*</font>
 					<p:inputText id="razaoSocial" value="#{cadUsuario.razaoSocial}"
 						required="true" requiredMessage="Campo Obrigatório" />
@@ -84,28 +84,35 @@
 					<p:inputText id="cnpj" value="#{cadUsuario.cnpj}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cnpj" />
-						
-					<p:outputLabel value="Nome do banco: " /> <!--  <p:outputLabel value="Dandos Bancários"/> -->	
+				</h:panelGrid>
+				<h:panelGrid columns="1" styleClass="panelgrid" 
+					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
+					<p:outputLabel value="Dados Bancários" />
+					<p:separator style="width:310px;height:3px"/>
+				</h:panelGrid>
+				<h:panelGrid columns="4" styleClass="panelgrid"
+					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
+					<p:outputLabel value="Nome do banco: " />
 					<font color="red">*</font>
 					<p:inputText id="nomeDoBanco" value="#{cadUsuario.nomeBanco}"
 						required="true" requiredMessage="Campo Obrigatório" />
 					<p:message for="nomeDoBanco" />
-					
+
 					<p:outputLabel value="Operação: " />
 					<font color="red">*</font>
 					<p:inputText id="operacao" value="#{cadUsuario.operacao}" />
 					<p:message for="operacao" />
-					
+
 					<p:outputLabel value="Agência: " />
 					<font color="red">*</font>
 					<p:inputText id="agencia" value="#{cadUsuario.agencia}"
 						required="true" requiredMessage="Campo Obrigatório" />
 					<p:message for="agencia" />
-					
+
 					<p:outputLabel value="Conta: " />
 					<font color="red">*</font>
-					<p:inputText id="conta" value="#{cadUsuario.conta}"
-						required="true" requiredMessage="Campo Obrigatório" />
+					<p:inputText id="conta" value="#{cadUsuario.conta}" required="true"
+						requiredMessage="Campo Obrigatório" />
 					<p:message for="conta" />
 				</h:panelGrid>
 
@@ -123,8 +130,6 @@
 						actionListener="#{cadUsuario.limpaDados}" update="@form"
 						type="reset" />
 				</h:panelGrid>
-
-
 			</f:validateBean>
 		</h:form>
 	</ui:define>
