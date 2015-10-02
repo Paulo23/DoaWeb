@@ -25,6 +25,23 @@ public class Instituicoes extends Usuarios {
 	@OneToMany(mappedBy = "instituicao", fetch=FetchType.EAGER)
 	private List<Campanhas> campanhas;
 	
+	/*
+	 * Dados Bancarios
+	 */
+	
+	@Column(name = "nomeBanco_dadosBancarios", nullable = false)
+	private String nomeBanco;
+
+	@Column(name = "operacao_dadosBancarios", nullable = true, length = 10)
+	private String operacao;
+
+	@Column(name = "agencia_dadosBancarios", nullable = false, length = 50)
+	private String agencia;
+
+	@Column(name = "conta_dadosBancarios", nullable = false, length = 50)
+	private String conta;
+
+	
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -49,4 +66,43 @@ public class Instituicoes extends Usuarios {
 		this.campanhas = campanhas;
 	}
 
+	/*
+	 * GETS/SETS DADOS BANCARIOS
+	 */
+	
+	
+	public String getNomeBanco() {
+		return nomeBanco;
+	}
+
+	public void setNomeBanco(String nomeBanco) {
+		this.nomeBanco = nomeBanco;
+	}
+
+	public String getOperacao() {
+		return operacao;
+	}
+
+	public void setOperacao(String operacao) {
+		this.operacao = operacao;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
+	}
+
+	public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	
+	
 }

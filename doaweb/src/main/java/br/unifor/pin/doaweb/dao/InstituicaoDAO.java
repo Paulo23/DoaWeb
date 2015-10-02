@@ -1,7 +1,15 @@
 package br.unifor.pin.doaweb.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -9,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.entity.Instituicoes;
+import br.unifor.pin.doaweb.exceptions.DAOException;
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -17,28 +26,65 @@ public class InstituicaoDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void salvar(Instituicoes instituicao) {
-		entityManager.persist(instituicao);
-	}
+	public Instituicoes buscaPorId(Integer id) throws DAOException {
+		String jpql = "select u from Instituicoes u where u.id = :id";
+		Query query = (Query) entityManager.createQuery(jpql);
+		query.setParameter("id", id);
 
-	public void atualizar(Instituicoes instituicao) {
-		entityManager.merge(instituicao);
-	}
+		try {
+			return (Instituicoes) ((javax.persistence.Query) query).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 
-	public void excluir(Instituicoes instituicao) {
-		entityManager.remove(instituicao);
-	}
-
-	public Instituicoes buscarPorId(Integer id){
-		return entityManager.find(Instituicoes.class, id);
 	}
 	
-	public Instituicoes buscarPorNome(String nome) {
-		String jpql = "select i from Instituicoes i where i.nome = :nome";
-		Query query = (Query) entityManager.createQuery(jpql);
-		query.setParameter("nome", nome);
-		
-		return (Instituicoes) ((javax.persistence.Query) query).getSingleResult();
+	public Instituicoes buscarPorEmail(String email) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Instituicoes> criteriaQuery = criteriaBuilder
+				.createQuery(Instituicoes.class);
+		Root<Instituicoes> Instituicoes = criteriaQuery.from(Instituicoes.class);
+		criteriaQuery.where(criteriaBuilder.equal(
+				Instituicoes.<String> get("email"), email));
+
+		Query query = (Query) entityManager.createQuery(criteriaQuery);
+		try {
+			return (Instituicoes) ((javax.persistence.Query) query).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
+
+	public Instituicoes buscarPorEmailSenha(String email, String senha) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Instituicoes> criteriaQuery = criteriaBuilder
+				.createQuery(Instituicoes.class);
+		Root<Instituicoes> Instituicoes = criteriaQuery.from(Instituicoes.class);
+		Predicate restriction = criteriaBuilder.and(
+				criteriaBuilder.equal(Instituicoes.<String> get("email"), email),
+				criteriaBuilder.equal(Instituicoes.<String> get("senha"), senha));
+		criteriaQuery.where(criteriaBuilder.and(restriction));
+
+		Query query = (Query) entityManager.createQuery(criteriaQuery);
+		try {
+			return (Instituicoes) ((javax.persistence.Query) query).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Instituicoes> listarPorNome(String nome) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Instituicoes> criteriaQuery = criteriaBuilder
+				.createQuery(Instituicoes.class);
+		Root<Instituicoes> Instituicoes = criteriaQuery.from(Instituicoes.class);
+		criteriaQuery.where(criteriaBuilder.like(Instituicoes.<String> get("nome"),
+				"%" + nome + "%"));
+
+		Query query = (Query) entityManager.createQuery(criteriaQuery);
+		return ((TypedQuery<br.unifor.pin.doaweb.entity.Instituicoes>) query).getResultList();
+	}
+	
 	
 }

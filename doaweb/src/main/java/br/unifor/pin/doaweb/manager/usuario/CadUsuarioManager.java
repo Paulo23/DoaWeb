@@ -52,6 +52,10 @@ public class CadUsuarioManager {
 	// atributos instituicao
 	private String razaoSocial;
 	private String cnpj;
+	private String nomeBanco;
+	private String operacao;
+	private String agencia;
+	private String conta;
 
 	public String salvar() {
 		
@@ -68,6 +72,10 @@ public class CadUsuarioManager {
 		} else {
 			((Instituicoes) usuario).setCnpj(getCnpj());
 			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
+			((Instituicoes) usuario).setNomeBanco(nomeBanco);
+			((Instituicoes) usuario).setOperacao(operacao);
+			((Instituicoes) usuario).setAgencia(agencia);
+			((Instituicoes) usuario).setConta(conta);
 		}
 		
 		try {
@@ -164,4 +172,37 @@ public class CadUsuarioManager {
 		this.cnpj = cnpj;
 	}
 
+	public String getNomeBanco() {
+		return nomeBanco;
+	}
+
+	public void setNomeBanco(String nomeBanco) {
+		this.nomeBanco = nomeBanco;
+	}
+
+	public String getOperacao() {
+		return operacao;
+	}
+
+	public void setOperacao(String operacao) {
+		this.operacao = operacao;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
+	}
+
+	public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	
 }
