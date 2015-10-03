@@ -3,13 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:view>
 	<h:form>
 		<h:panelGroup id="sidebar" layout="block">
-			<h1>Menu</h1> Content for the sidebar goes here
+			<h1>Menu</h1>
 		</h:panelGroup>
+
+		<p:panelMenu style="width:300px">
+			<p:submenu label="Doacões"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+				<p:menuitem value="Realizar Doação" actionListener="#{menuView.save}" />
+				<p:menuitem value="Minhas Doações" actionListener="#{menuView.save}" />
+			</p:submenu>
+			<p:submenu label="Perfil Doador"
+				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
+				<p:menuitem value="Editar Perfil" actionListener="#{menuView.save}" />
+				<p:menuitem value="Excluir Conta" actionListener="#{menuView.save}" />
+			</p:submenu>
+			<p:submenu label="Campanha"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<p:menuitem value="Nova Campanha" actionListener="#{menuView.save}" />
+				<p:menuitem value="Minhas Campanhas"
+					actionListener="#{menuView.save}" />
+			</p:submenu>
+			<p:submenu label="Perfil da Instituição"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<p:menuitem value="Editar Perfil" actionListener="#{menuView.save}" />
+				<p:menuitem value="Excluir Conta" actionListener="#{menuView.save}" />
+			</p:submenu>
+		</p:panelMenu>
+
 	</h:form>
 </f:view>
 </html>
