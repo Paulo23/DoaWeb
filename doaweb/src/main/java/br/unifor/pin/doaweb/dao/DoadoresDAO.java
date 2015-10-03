@@ -36,6 +36,22 @@ public class DoadoresDAO {
 			return null;
 		}
 	}
+	
+	public Doadores buscarPorCPF(String cpf) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Doadores> criteriaQuery = criteriaBuilder
+				.createQuery(Doadores.class);
+		Root<Doadores> Doadores = criteriaQuery.from(Doadores.class);
+		criteriaQuery.where(criteriaBuilder.equal(
+				Doadores.<String> get("cpf"), cpf));
+
+		Query query = entityManager.createQuery(criteriaQuery);
+		try {
+			return (Doadores) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 
 	public Doadores buscarPorEmail(String email) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

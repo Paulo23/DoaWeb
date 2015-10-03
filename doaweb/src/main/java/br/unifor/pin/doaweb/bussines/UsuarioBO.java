@@ -7,8 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
 import br.unifor.pin.doaweb.aspectj.PermitAll;
+import br.unifor.pin.doaweb.dao.DoadoresDAO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
+import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.exceptions.DAOException;
 
 /**
@@ -23,8 +26,19 @@ public class UsuarioBO {
 	@Autowired
 	private UsuariosDAO usuarioDAO;
 	
-	public void salvar(Usuarios usuario) {
+	@Autowired
+	private DoadoresDAO doadoresDAO;
+	
+	public void salvar(Usuarios usuario) throws BOException {
 		usuario.setAtivo(true);
+		
+		if (usuario instanceof Doadores) {
+			Usuarios usuarioComMesmoCPFJaCadastrado = doadoresDAO.buscarPorCPF(((Doadores)usuario).getCpf());
+			if(usuarioComMesmoCPFJaCadastrado != null){
+				throw new BOException("CPF já cadastrado. Volte a tela de cadastro e tente novamente.");
+			}
+		}
+		
 		usuarioDAO.salvar(usuario);
 	}
 
