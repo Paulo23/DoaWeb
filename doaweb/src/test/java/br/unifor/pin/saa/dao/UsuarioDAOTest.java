@@ -8,9 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.unifor.pin.doaweb.dao.DoadoresDAO;
-import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Usuarios;
-import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
@@ -25,9 +23,10 @@ public class UsuarioDAOTest {
 		Usuarios doador = new Usuarios();
 //		doador.setNome("adriano");
 		doador.setSenha("123456");
-		doador.setEmail("adriano@gmail.com");
+		doador.setEmail("adriano");
 		doador.setAtivo(false);
 		//usuarioDAO.salvar(doador);
+		
 		
 		Assert.assertNotNull(doador.getId());
 		System.out.println(doador.getId());

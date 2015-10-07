@@ -88,4 +88,14 @@ public class LoginManager {
 		this.existsEmail = existsEmail;
 	}
 
+	public SegurancaTO getSeguranca() {
+		return seguranca;
+	}
+
+	public void setSeguranca(SegurancaTO seguranca) {
+		this.seguranca = seguranca;
+	}
+
+	
+	
 }

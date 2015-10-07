@@ -58,13 +58,13 @@ public class Instituicoes extends Usuarios {
 		this.razaoSocial = razaoSocial;
 	}
 
-	public List<Campanhas> getCampanhas() {
-		return campanhas;
-	}
+	//public List<Campanhas> getCampanhas() {
+//		return campanhas;
+	//}
 
-	public void setCampanhas(List<Campanhas> campanhas) {
-		this.campanhas = campanhas;
-	}
+	//public void setCampanhas(List<Campanhas> campanhas) {
+	//	this.campanhas = campanhas;
+	//}
 
 	/*
 	 * GETS/SETS DADOS BANCARIOS

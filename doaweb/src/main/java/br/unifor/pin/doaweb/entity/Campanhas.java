@@ -15,10 +15,6 @@ import javax.persistence.TemporalType;
 
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
-/**
- * @author equipe.doaweb
- *
- */
 @Entity
 public class Campanhas {
 
@@ -43,8 +39,8 @@ public class Campanhas {
 	private String descricao;
 
 	@ManyToOne
-	@JoinColumn(name = "id_instituicao")
-	private Instituicoes instituicao;
+	@JoinColumn(name = "id_usuario")
+	private Usuarios instituicao;
 
 	public Integer getId() {
 		return id;
@@ -87,7 +83,7 @@ public class Campanhas {
 	}
 
 	public Instituicoes getInstituicao() {
-		return instituicao;
+		return (Instituicoes) instituicao;
 	}
 
 	public void setInstituicao(Instituicoes instituicao) {

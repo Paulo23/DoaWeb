@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListCampanhas">
+			<h2>Listagem de Campanhas</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<p:outputLabel>
+
+				<!-- Painel Tabela campanhas -->
+
+				<h:panelGrid columns="3" styleClass="panelgrid">
+
+					<p:dataTable id="listaCampanhas"
+						value="#{listCampanha.listarCampanhas}" var="campanhas"
+						paginator="true" paginatorPosition="bottom" rows="10"
+						emptyMessage="Não foram encontradas campanhas"
+						styleClass="datatable">
+
+
+						<p:column headerText="Início da Campanha" styleClass="text-center">
+							<h:outputText value="#{campanhas.dataInicioCampanhas}" />
+						</p:column>
+						<p:column headerText="Final da Campanha" styleClass="text-center">
+							<h:outputText value="#{campanhas.dataTerminoCampanhas}" />
+						</p:column>
+						<p:column headerText="Tipo de Campanha" styleClass="text-center">
+							<h:outputText value="#{campanhas.tipo}" />
+						</p:column>
+
+
+					</p:dataTable>
+
+					<h:panelGrid columns="3" styleClass="panelgrid">
+						<p:commandButton value="Listar"
+							actionListener="#{listCampanha.lista}" update="@form" />
+
+						<p:outputLabel for="dateCriacao" value="Data Início:" />
+						<font color="red">*</font>
+						<p:calendar id="dateCriacao"
+							value="#{listCampanha.dateCriacao}" showOn="button" />
+							
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+			</p:outputLabel>
+		</h:form>
+	</ui:define>
+</ui:composition>

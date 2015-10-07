@@ -17,7 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import br.unifor.pin.doaweb.entity.Usuarios;
 
 /**
  * @author patrick.cunha

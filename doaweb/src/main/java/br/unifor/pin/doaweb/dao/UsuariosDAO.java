@@ -16,10 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.exceptions.DAOException;
 
-/**
- * @author patrick.cunha
- * 
- */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
 public class UsuariosDAO {

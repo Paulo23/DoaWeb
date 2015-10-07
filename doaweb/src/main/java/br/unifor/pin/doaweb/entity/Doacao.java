@@ -16,10 +16,6 @@ import javax.persistence.TemporalType;
 
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
-/**
- * @author equipe.doaweb
- *
- */
 @Entity
 public class Doacao {
 

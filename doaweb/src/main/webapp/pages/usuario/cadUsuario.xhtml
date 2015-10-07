@@ -49,13 +49,13 @@
 				<h:panelGrid id="gridDoador" columns="4" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'DOADOR'}">
 
-					<p:outputLabel value="Nome: " />
+					<p:outputLabel value="Nome:" />
 					<font color="red">*</font>
 					<p:inputText id="nome" value="#{cadUsuario.nome}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="nome" />
 
-					<p:outputLabel value="CPF: " />
+					<p:outputLabel value="CPF:" />
 					<font color="red">*</font>
 					<p:inputText id="cpf" value="#{cadUsuario.cpf}" required="true"
 						requiredMessage="Campo Obrigatório" />

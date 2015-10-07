@@ -22,11 +22,6 @@ import br.unifor.pin.doaweb.utils.Encripta;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
-
-/**
- * @author patrick.cunha
- * 
- */
 @RequestScoped
 @ManagedBean(name = "cadUsuario")
 @Component(value = "cadUsuario")
@@ -72,10 +67,10 @@ public class CadUsuarioManager {
 		} else {
 			((Instituicoes) usuario).setCnpj(getCnpj());
 			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
-			((Instituicoes) usuario).setNomeBanco(nomeBanco);
-			((Instituicoes) usuario).setOperacao(operacao);
-			((Instituicoes) usuario).setAgencia(agencia);
-			((Instituicoes) usuario).setConta(conta);
+			((Instituicoes) usuario).setNomeBanco(getNomeBanco());
+			((Instituicoes) usuario).setOperacao(getOperacao());
+			((Instituicoes) usuario).setAgencia(getAgencia());
+			((Instituicoes) usuario).setConta(getConta());
 		}
 		
 		try {

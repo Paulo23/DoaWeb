@@ -11,7 +11,7 @@
 		<from-view-id>/pages/login/login.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fracasso</from-outcome>
@@ -23,6 +23,14 @@
 		</navigation-case>
 	</navigation-rule>
 	<!-- Login Fim -->
+
+	<navigation-rule>
+		<from-view-id>/pages/campanhas/cadCampanha.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<!-- Usuarios Inicio -->
 	<navigation-rule>

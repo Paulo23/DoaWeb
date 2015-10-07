@@ -11,4 +11,5 @@ public class Navigation {
 	public static final String FRACASSO = "fracasso";
 	public static final String CADASTRO = "cadastro";
 
+
 }

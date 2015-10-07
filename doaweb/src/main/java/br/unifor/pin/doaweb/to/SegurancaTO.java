@@ -39,6 +39,10 @@ public class SegurancaTO implements Serializable {
 		return usuario;
 	}
 	
+	public Integer getUsuarioID(){
+		return usuario.getId();
+	}
+	
 	public TipoUsuario getTipoUsuario(){
 		if(this.usuario instanceof Doadores){
 			return TipoUsuario.DOADOR;
