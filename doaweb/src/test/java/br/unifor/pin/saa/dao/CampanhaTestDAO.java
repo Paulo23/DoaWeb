@@ -19,6 +19,7 @@ import br.unifor.pin.doaweb.dao.UsuariosDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
+import br.unifor.pin.doaweb.exceptions.DAOException;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,6 +34,8 @@ public class CampanhaTestDAO {
 	
 	
 	
+	
+	
 	public Date stringToDate() throws ParseException{
 		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");  
 		Date date = (Date)formatter.parse("01/29/02"); 
@@ -40,17 +43,24 @@ public class CampanhaTestDAO {
 	}
 	
 	@Test
-	public void testSalvar() throws ParseException {
+	public void testSalvar() throws ParseException, DAOException {
 		Instituicoes instituicao = new Instituicoes();
+		
 		instituicao.setAgencia("123");
-		instituicao.setAtivo(true);
-		instituicao.setCnpj("1234567");
-		instituicao.setConta("456");
-		instituicao.setEmail("laraie@gmail.com");
 		instituicao.setNomeBanco("Banco Brasil");
 		instituicao.setOperacao("3");
+		instituicao.setConta("456");
+		
+		instituicao.setAtivo(true);
+		
+		instituicao.setEmail("admin5");
+		instituicao.setSenha("123");
+		instituicao.setCnpj("1234567");
 		instituicao.setRazaoSocial("Lar Santa");
-		instituicao.setSenha("1234");
+		instituicao.setDesc("testes");
+		instituicao.setEnd("fortaleza-ce");
+		instituicao.setTelefone("9999000");
+		
 		instituicaoDAO.salvar(instituicao);
 		
 		
@@ -62,8 +72,11 @@ public class CampanhaTestDAO {
 		campanha.setInstituicao(instituicao);
 		
 		campanhasDAO.salvar(campanha);
+	
+		campanhasDAO.buscaPorId(campanha.getId());
 		
 		}
+	
 	
 	
 }

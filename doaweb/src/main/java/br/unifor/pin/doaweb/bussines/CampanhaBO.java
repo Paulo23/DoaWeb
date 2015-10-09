@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
+import br.unifor.pin.doaweb.aspectj.PermitAll;
 import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
+import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.exceptions.DAOException;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 
 @Component
@@ -44,5 +47,17 @@ public class CampanhaBO {
 		List<Campanhas> campanhas = campanhasDAO.listarPorDataDeInicio(date);
 		return campanhas;
 	}
+	
+	@PermitAll
+	@Loggable(enable = false)
+	public Campanhas buscarPorId(Integer id) {
+		try {
+			return campanhasDAO.buscaPorId(id);
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	
 }

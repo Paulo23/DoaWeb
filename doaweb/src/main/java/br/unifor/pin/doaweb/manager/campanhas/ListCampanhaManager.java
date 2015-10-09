@@ -22,18 +22,17 @@ public class ListCampanhaManager {
 	private CampanhaBO campanhaBO;
 
 	private Date dateCriacao;
-
-	private List<Campanhas> listarCampanhas;
+	private Integer id;
+	
+	private Campanhas listarCampanhas;
 
 	public Date getDataCriacao(){
 		return getDateCriacao();
 	}
 
 	public void lista() {
-
-		// listarCampanhas = (List<Campanhas>)
-		// campanhaBO.buscaPorDate(getDataCriacao());
-		System.out.println(getDataCriacao());
+		listarCampanhas = campanhaBO.buscarPorId(id);
+		System.out.println(listarCampanhas);
 	}
 
 	public String preparaListar() {
@@ -57,12 +56,24 @@ public class ListCampanhaManager {
 		this.dateCriacao = dateCriacao;
 	}
 
-	public List<Campanhas> getListarCampanhas() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Campanhas getListarCampanhas() {
 		return listarCampanhas;
 	}
 
-	public void setListarCampanhas(List<Campanhas> listarCampanhas) {
+	public void setListarCampanhas(Campanhas listarCampanhas) {
 		this.listarCampanhas = listarCampanhas;
 	}
+	
+	
 
+	
+	
 }
