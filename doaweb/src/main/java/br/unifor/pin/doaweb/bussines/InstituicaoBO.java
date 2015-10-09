@@ -13,10 +13,6 @@ public class InstituicaoBO {
 	@Autowired
 	private InstituicaoDAO instituicaoDAO;
 
-	/*
-	@RolesAllowed(value = { "INCLUIR_INSTITUICAO" })
-	public void salvar(Instituicoes instituicao) {
-		instituicaoDAO.salvar(instituicao);
-	}*/
+	
 
 }

@@ -22,6 +22,15 @@ public class Instituicoes extends Usuarios {
 	@Column(name="razao_social", nullable = false)
 	private String razaoSocial;
 	
+	@Column(name = "endereco",  nullable=false)
+	private String end;
+	
+	@Column(nullable = false)
+	private String telefone;
+
+	@Column(name = "descricao_instituicao", nullable = false)
+	private String desc;
+	
 	@OneToMany(mappedBy = "instituicao", fetch=FetchType.EAGER)
 	private List<Campanhas> campanhas;
 	
@@ -41,6 +50,9 @@ public class Instituicoes extends Usuarios {
 	@Column(name = "conta_dadosBancarios", nullable = false, length = 50)
 	private String conta;
 
+	/*
+	 * GETS/SETS DADOS DA INSTITUIÇÃO
+	 */
 	
 	public String getCnpj() {
 		return cnpj;
@@ -57,20 +69,35 @@ public class Instituicoes extends Usuarios {
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
+	
+	public String getEnd() {
+		return end;
+	}
 
-	//public List<Campanhas> getCampanhas() {
-//		return campanhas;
-	//}
+	public void setEnd(String end) {
+		this.end = end;
+	}
 
-	//public void setCampanhas(List<Campanhas> campanhas) {
-	//	this.campanhas = campanhas;
-	//}
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 
 	/*
 	 * GETS/SETS DADOS BANCARIOS
 	 */
-	
-	
+
 	public String getNomeBanco() {
 		return nomeBanco;
 	}

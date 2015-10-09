@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @DiscriminatorValue("0")
@@ -12,12 +14,19 @@ public class Doadores extends Usuarios {
 	
 	@Column(nullable=false)
 	private String nome;
-
+	
+	@Temporal(TemporalType.DATE)	
 	@Column(name = "data_nascimento", nullable=false)
 	private Date dataNascimento;
 
 	@Column(name = "cpf", length = 14, nullable=false, unique = true )
 	private String cpf;
+	
+	@Column(name = "telefone", nullable = false)
+	private String telDoador;
+	
+	@Column(name = "endereco", nullable = false)
+	private String endDoador;
 	
 	public Date getDataNascimento() {
 		return dataNascimento;
@@ -42,5 +51,25 @@ public class Doadores extends Usuarios {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getTelDoador() {
+		return telDoador;
+	}
+
+	public void setTelDoador(String telDoador) {
+		this.telDoador = telDoador;
+	}
+
+	public String getEndDoador() {
+		return endDoador;
+	}
+
+	public void setEndDoador(String endDoador) {
+		this.endDoador = endDoador;
+	}
+
+	
+	
+	
 	
 }

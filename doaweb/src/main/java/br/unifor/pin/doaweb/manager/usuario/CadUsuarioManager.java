@@ -43,14 +43,19 @@ public class CadUsuarioManager {
 	private String nome;
 	private Date dataNascimento;
 	private String cpf;
+	private String endDoador;
+	private String telDoador;
 
 	// atributos instituicao
 	private String razaoSocial;
 	private String cnpj;
+	private String end;
+	private String tel;
 	private String nomeBanco;
 	private String operacao;
 	private String agencia;
 	private String conta;
+	private String descricao;
 
 	public String salvar() {
 		
@@ -61,12 +66,17 @@ public class CadUsuarioManager {
 		usuario.setSenha(Encripta.encripta(getSenha()));
 
 		if(usuario instanceof Doadores){
+			((Doadores) usuario).setNome(getNome());
 			((Doadores) usuario).setCpf(getCpf());
 			((Doadores) usuario).setDataNascimento(getDataNascimento());
-			((Doadores) usuario).setNome(getNome());
+			((Doadores) usuario).setEndDoador(getEndDoador());
+			((Doadores) usuario).setTelDoador(getTelDoador());
 		} else {
 			((Instituicoes) usuario).setCnpj(getCnpj());
 			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
+			((Instituicoes) usuario).setEnd(getEnd());
+			((Instituicoes) usuario).setTelefone(getTel());
+			((Instituicoes) usuario).setDesc(getDescricao());
 			((Instituicoes) usuario).setNomeBanco(getNomeBanco());
 			((Instituicoes) usuario).setOperacao(getOperacao());
 			((Instituicoes) usuario).setAgencia(getAgencia());
@@ -199,5 +209,50 @@ public class CadUsuarioManager {
 		this.conta = conta;
 	}
 
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getEndDoador() {
+		return endDoador;
+	}
+
+	public void setEndDoador(String endDoador) {
+		this.endDoador = endDoador;
+	}
+
+	public String getTelDoador() {
+		return telDoador;
+	}
+
+	public void setTelDoador(String telDoador) {
+		this.telDoador = telDoador;
+	}
+
+	
+	
+	
+
+	
 	
 }

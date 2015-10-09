@@ -61,6 +61,18 @@
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cpf" />
 
+					<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="endDoador" value="#{cadUsuario.endDoador}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="endDoador" />
+					
+					<p:outputLabel value="Telefone: " />
+					<font color="red">*</font>
+					<p:inputText id="telDoador" value="#{cadUsuario.telDoador}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="telDoador" />
+
 					<p:outputLabel for="dataNascimento" value="Data Nascimento:" />
 					<font color="red">*</font>
 					<p:calendar id="dataNascimento"
@@ -84,14 +96,35 @@
 					<p:inputText id="cnpj" value="#{cadUsuario.cnpj}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cnpj" />
+
+					<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="end" value="#{cadUsuario.end}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="end" />
+
+					<p:outputLabel value="Telefone: " />
+					<font color="red">*</font>
+					<p:inputText id="tel" value="#{cadUsuario.tel}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="tel" />
+
+					<p:outputLabel value="Descrição: " />
+					<font color="red">*</font>
+					<p:inputText id="descricao" value="#{cadUsuario.descricao}"
+						required="true" requiredMessage="Campo Obrigatório" />
+					<p:message for="descricao" />
 				</h:panelGrid>
-				<h:panelGrid columns="1" styleClass="panelgrid" 
+
+				<h:panelGrid columns="1" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
 					<p:outputLabel value="Dados Bancários" />
-					<p:separator style="width:310px;height:3px"/>
+					<p:separator style="width:310px;height:3px" />
 				</h:panelGrid>
+
 				<h:panelGrid columns="4" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
+
 					<p:outputLabel value="Nome do banco: " />
 					<font color="red">*</font>
 					<p:inputText id="nomeDoBanco" value="#{cadUsuario.nomeBanco}"

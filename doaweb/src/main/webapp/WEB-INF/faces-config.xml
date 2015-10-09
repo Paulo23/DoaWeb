@@ -32,6 +32,14 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/pages/usuario/excUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>excluir</from-outcome>
+			<to-view-id>/pages/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<!-- Usuarios Inicio -->
 	<navigation-rule>
 		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
@@ -42,10 +50,10 @@
 	</navigation-rule>
 
 	<navigation-rule>
-		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
+		<from-view-id>/pages/usuario/preparaAtualizarUsuario.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>atualiza</from-outcome>
-			<to-view-id>/pages/usuario/atualizaUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/usuario/atualizarUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

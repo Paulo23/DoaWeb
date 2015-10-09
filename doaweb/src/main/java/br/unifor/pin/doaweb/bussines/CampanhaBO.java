@@ -11,7 +11,6 @@ import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
-import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 
 @Component

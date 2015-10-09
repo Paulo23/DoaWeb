@@ -1,6 +1,5 @@
 package br.unifor.pin.doaweb.manager.campanhas;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class ListCampanhaManager {
 		return getDateCriacao();
 	}
 
-	public void lista() throws ParseException {
+	public void lista() {
 
 		// listarCampanhas = (List<Campanhas>)
 		// campanhaBO.buscaPorDate(getDataCriacao());

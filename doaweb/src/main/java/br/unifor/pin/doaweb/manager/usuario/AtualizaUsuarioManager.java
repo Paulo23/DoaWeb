@@ -6,9 +6,10 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.doaweb.bussines.UsuarioBO;
+import br.unifor.pin.doaweb.dao.UsuariosDAO;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
-import br.unifor.pin.doaweb.utils.MessagesUtils;
+import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 /**
  * @author patrick.cunha
@@ -20,34 +21,38 @@ import br.unifor.pin.doaweb.utils.Navigation;
 public class AtualizaUsuarioManager {
 
 	@Autowired
-	private UsuarioBO usuarioBO;
+	private UsuariosDAO usuariosDAO;
+	private SegurancaTO segurancaTO;
 	private Usuarios usuarioSelecionado;
-
-	public String atualizar() {
-		usuarioBO.atualizar(usuarioSelecionado);
-		MessagesUtils.info("Usuário atualizado com sucesso!");
-
-		return Navigation.SUCESSO;
-	}
-
-	public String preparaAtualizar(Usuarios usuario) {
-		usuarioSelecionado = usuarioBO.buscarPorId(usuario.getId());
+	
+	
+	public String preparaAtualizar() {
+		//usuarioSelecionado = this.segurancaTO.getUsuario();
 
 		return Navigation.ATUALIZA;
 	}
 	
+	public String preparaListar(){
+		this.limparDados();
+		return Navigation.SUCESSO;
+	}
+	
+	public String excluir(){
+		usuarioSelecionado = (Instituicoes) this.segurancaTO.getUsuario();
+		usuariosDAO.excluir(usuarioSelecionado);
+		
+		return Navigation.EXCLUIR;
+	}
+
+	
 	public void limparDados(){
 //		usuarioSelecionado.setNome("");
-		usuarioSelecionado.setEmail("");
-		usuarioSelecionado.setSenha("");
+//		usuarioSelecionado.setEmail("");
+//		usuarioSelecionado.setSenha("");
 //		usuarioSelecionado.setAtivo(false);
 	}
 
-	public Usuarios getUsuarioSelecionado() {
-		return usuarioSelecionado;
-	}
-	public void setUsuarioSelecionado(Usuarios usuarioSelecionado) {
-		this.usuarioSelecionado = usuarioSelecionado;
-	}
+
+	
 	
 }

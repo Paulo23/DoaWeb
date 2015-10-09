@@ -32,6 +32,9 @@ public class LoginManager {
 	@Autowired
 	private SegurancaTO seguranca;
 	private Usuarios usuario = new Usuarios();
+	
+	private Instituicoes instituicao;
+	private Doadores doador;
 	private boolean existsEmail;
 
 	public String loggar() {
@@ -42,9 +45,11 @@ public class LoginManager {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
 			if(usuario instanceof Doadores) {
-				MessagesUtils.info("Bem vindo "+((Doadores)usuario).getNome());
+				//MessagesUtils.info("Bem vindo "+((Doadores)usuario).getNome());
+				setDoador((Doadores) usuario);
 			} else if (usuario instanceof Instituicoes) {
-				MessagesUtils.info("Bem vindo "+((Instituicoes)usuario).getRazaoSocial());
+				//MessagesUtils.info("Bem vindo "+((Instituicoes)usuario).getRazaoSocial());
+				setInstituicao((Instituicoes) usuario);
 			}
 			return Navigation.SUCESSO;
 		} else {
@@ -94,6 +99,22 @@ public class LoginManager {
 
 	public void setSeguranca(SegurancaTO seguranca) {
 		this.seguranca = seguranca;
+	}
+
+	public Instituicoes getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicoes instituicao) {
+		this.instituicao = instituicao;
+	}
+
+	public Doadores getDoador() {
+		return doador;
+	}
+
+	public void setDoador(Doadores doador) {
+		this.doador = doador;
 	}
 
 	
