@@ -7,38 +7,38 @@
 	<ui:define name="content">
 
 		<h:form id="formInfoUsuario">
-			<h2>Perfil da Instituição</h2>
+			<h2>Perfil do Usuário</h2>
 			<p:separator />
 			<br />
 			<h:panelGrid>
-			
+
 				<p:messages id="messages" showDetail="true" autoUpdate="true"
 					closable="true" />
 			</h:panelGrid>
-			
+
 			<!-- PainelGrid DOADORES -->
 
 			<h:panelGrid id="gridDoador" columns="2" styleClass="panelgrid"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
 
 				<p:outputLabel id="nomeLb" value="Nome: " />
-				<p:outputLabel id="nome" value="#{login.doador.nome}"/>
+				<p:outputLabel id="nome" value="#{login.doador.nome}" />
 				<p:outputLabel id="cpfLb" value="CPF: " />
-				<p:outputLabel id="cpf" value="#{login.doador.cpf}"/>
+				<p:outputLabel id="cpf" value="#{login.doador.cpf}" />
 				<p:outputLabel id="enderecoLb" value="Endereço: " />
-				<p:outputLabel id="endDoador" value="#{login.doador.endDoador}"/>
+				<p:outputLabel id="endDoador" value="#{login.doador.endDoador}" />
 				<p:outputLabel id="telefoneLb" value="Telefone: " />
-				<p:outputLabel id="telDoador" value="#{login.doador.telDoador}"/>
+				<p:outputLabel id="telDoador" value="#{login.doador.telDoador}" />
 				<p:outputLabel id="nascLb" value="Data de Nascimento: " />
-				<p:outputLabel id="nasc" value="#{login.doador.dataNascimento}"/>
-				
+				<p:outputLabel id="nasc" value="#{login.doador.dataNascimento}" />
+
 			</h:panelGrid>
 
 			<!-- PainelGrid INSTITUICAO -->
-			
+
 			<h:panelGrid id="gridInstituicao" columns="2" styleClass="panelgrid"
 				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
-				
+
 				<p:outputLabel id="razaoLb" value="Razão Social: " />
 				<p:outputLabel id="razao" value="#{login.instituicao.razaoSocial}" />
 				<p:outputLabel id="cnpjLb" value="CNPJ: " />
@@ -57,7 +57,7 @@
 				<p:outputLabel id="agencia" value="#{login.instituicao.agencia}" />
 				<p:outputLabel id="contaLb" value="Conta: " />
 				<p:outputLabel id="conta" value="#{login.instituicao.conta}" />
-				
+
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

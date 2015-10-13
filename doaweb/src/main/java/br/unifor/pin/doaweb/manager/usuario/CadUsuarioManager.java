@@ -97,6 +97,10 @@ public class CadUsuarioManager {
 		this.limpaDados();
 		return Navigation.CADASTRO;
 	}
+	
+	public String voltar(){
+		return Navigation.VOLTAR;
+	}
 
 	public List<SelectItem> getTipoUsuarios() {
 		List<SelectItem> items = new ArrayList<SelectItem>();

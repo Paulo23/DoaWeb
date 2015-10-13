@@ -1,4 +1,4 @@
-package br.unifor.pin.doaweb.manager.campanhas;
+package br.unifor.pin.doaweb.manager.instituicao;
 
 import java.util.Date;
 
@@ -12,7 +12,6 @@ import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
-import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 

@@ -7,7 +7,7 @@
 	<ui:define name="content">
 
 		<h:form id="formListCampanhas">
-			<h2>Listagem de Campanhas</h2>
+			<h2>Realizar Doações</h2>
 			<p:separator />
 			<br />
 			<h:panelGrid>
@@ -41,25 +41,7 @@
 
 					</p:dataTable>
 
-					<h:panelGrid columns="3" styleClass="panelgrid">
 
-						<!--  
-						<p:outputLabel for="dateCriacao" value="Data Início:" />
-						<font color="red">*</font>
-						<p:calendar id="dateCriacao" value="#{listCampanha.dateCriacao}"
-							showOn="button" /> -->
-
-						<p:outputLabel value="idCampanha " />
-						<font color="red">*</font>
-						<p:inputText id="id" value="#{listCampanha.id}" required="true"
-							requiredMessage="Campo Obrigatório" />
-						<p:message for="id" />
-
-					</h:panelGrid>
-					<h:panelGrid columns="2" styleClass="panelgrid">
-						<p:commandButton value="Listar"
-							actionListener="#{listCampanha.lista}" update="@form" />
-					</h:panelGrid>
 
 				</h:panelGrid>
 			</p:outputLabel>

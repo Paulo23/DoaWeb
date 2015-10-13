@@ -24,8 +24,9 @@
 	</navigation-rule>
 	<!-- Login Fim -->
 
+	<!-- Instituição -->
 	<navigation-rule>
-		<from-view-id>/pages/campanhas/cadCampanha.xhtml</from-view-id>
+		<from-view-id>/pages/instituicao/cadCampanha.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>voltar</from-outcome>
 			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
@@ -33,10 +34,34 @@
 	</navigation-rule>
 
 	<navigation-rule>
-		<from-view-id>/pages/usuario/excUsuario.xhtml</from-view-id>
+		<from-view-id>/pages/instituicao/excInstituicao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/usuario/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Doador -->
+	<navigation-rule>
+		<from-view-id>/pages/doador/realDoacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/doador/infoUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/doador/excDoador.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>excluir</from-outcome>
 			<to-view-id>/pages/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>listar</from-outcome>
+			<to-view-id>/pages/instituicao/listCampanhas.xhtmll</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

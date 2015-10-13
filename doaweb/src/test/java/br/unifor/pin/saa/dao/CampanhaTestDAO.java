@@ -73,7 +73,7 @@ public class CampanhaTestDAO {
 		
 		campanhasDAO.salvar(campanha);
 	
-		campanhasDAO.buscaPorId(campanha.getId());
+		//campanhasDAO.buscaPorId(campanha.getId());
 		
 		}
 	

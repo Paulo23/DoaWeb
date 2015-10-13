@@ -31,6 +31,9 @@ public class Doacao {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_doacao", nullable = false, updatable = false)
 	private Date dataDoacao;
+	
+	@Column(name = "inf_doacao")
+	private String informacoes;
 
 	@ManyToOne
 	@JoinColumn(name = "id_campanhas")
@@ -79,5 +82,14 @@ public class Doacao {
 	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
 	}
+
+	public String getInformacoes() {
+		return informacoes;
+	}
+
+	public void setInformacoes(String informacoes) {
+		this.informacoes = informacoes;
+	}
+	
 
 }
