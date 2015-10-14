@@ -28,6 +28,11 @@ public class RealDoacaoManager {
 		ltTodasCampanhas = campanhaBO.buscarTodasCamp();
 		return Navigation.LISTCAMPDOAD;
 	}
+	
+	public void realizarDoacao(Campanhas campanhas){
+		System.out.println("fiz uma doação");
+		
+	}
 
 	public List<Campanhas> getLtTodasCampanhas() {
 		return ltTodasCampanhas;

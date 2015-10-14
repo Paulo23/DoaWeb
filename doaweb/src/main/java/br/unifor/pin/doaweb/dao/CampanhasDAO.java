@@ -5,9 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +40,7 @@ public class CampanhasDAO {
 		return (List<Campanhas>) query.getResultList();
 
 	}
-	
+
 	public Campanhas buscaCampanhaPorId(Integer id) {
 		String jpql = "select u from Campanhas u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);
@@ -51,12 +48,12 @@ public class CampanhasDAO {
 		return (Campanhas) query.getSingleResult();
 
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaTodasCampanhas() {
-		String jpql = "select * from Campanhas";
+		String jpql = "select bean from Campanhas bean";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
-	
 
 }

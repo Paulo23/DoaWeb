@@ -49,6 +49,20 @@
 				<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
 				<p:outputLabel id="descLb" value="Descrição: " />
 				<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="gridSeparator" columns="1" styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+				<br />
+				<p:outputLabel id="separator" value="Dados Bancários " />
+				<br />
+			</h:panelGrid>
+
+			<h:panelGrid id="gridInstituicaoBanco" columns="2"
+				styleClass="panelgrid"
+				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
+
 				<p:outputLabel id="bancoLb" value="Banco: " />
 				<p:outputLabel id="nomeBanco" value="#{login.instituicao.nomeBanco}" />
 				<p:outputLabel id="opLb" value="Operação: " />
