@@ -21,7 +21,7 @@
 			<p:submenu label="Doacões"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
 				<p:menuitem value="Realizar Doação"
-					action="/pages/doador/realDoacao.xhtml" />
+					action="#{realizarDoac.listarTodasCampanhas}" />
 				<p:menuitem value="Minhas Doações"
 					action="/pages/doador/minDoacao.xhtml" />
 			</p:submenu>

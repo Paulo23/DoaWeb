@@ -60,8 +60,15 @@
 	
 	<navigation-rule>
 		<navigation-case>
-			<from-outcome>listar</from-outcome>
-			<to-view-id>/pages/instituicao/listCampanhas.xhtmll</to-view-id>
+			<from-outcome>listaCampInst</from-outcome>
+			<to-view-id>/pages/instituicao/listCampanhas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>listarCampDoad</from-outcome>
+			<to-view-id>/pages/doador/realDoacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

@@ -21,20 +21,19 @@ public class ListCampanhaManager {
 	private CampanhaBO campanhaBO;
 
 	private List<Campanhas> ltCampanhas;
-	
+
 	private Campanhas campanha;
 
 	public String listarMinhasCampanhas() {
-		ltCampanhas = campanhaBO
-				.buscarCamp(campanhaBO.getInstituicaoCampanha());
-		return Navigation.LIST;
-
+		ltCampanhas = campanhaBO.buscarCampPorInst(campanhaBO
+				.getInstituicaoCampanha());
+		return Navigation.LISTCAMPINST;
 	}
-	
-	public void excluir(Campanhas campanha){
+
+	public void excluir(Campanhas campanha) {
 		campanhaBO.excluirCampanha(campanha);
-		ltCampanhas = campanhaBO
-				.buscarCamp(campanhaBO.getInstituicaoCampanha());
+		ltCampanhas = campanhaBO.buscarCampPorInst(campanhaBO
+				.getInstituicaoCampanha());
 	}
 
 	public List<Campanhas> getLtCampanhas() {
@@ -53,5 +52,4 @@ public class ListCampanhaManager {
 		this.campanha = campanha;
 	}
 
-	
 }

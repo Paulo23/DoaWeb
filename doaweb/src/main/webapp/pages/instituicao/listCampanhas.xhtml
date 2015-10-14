@@ -27,7 +27,7 @@
 						emptyMessage="Nenhum resultado encontrado">
 
 						<p:column headerText="Início da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataInicioCampanhas}"  />
+							<h:outputText value="#{campanhas.dataInicioCampanhas}" />
 						</p:column>
 						<p:column headerText="Fim da Campanha" styleClass="text-center">
 							<h:outputText value="#{campanhas.dataTerminoCampanhas}" />
@@ -35,22 +35,14 @@
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
 							<h:outputText value="#{campanhas.tipo}" />
 						</p:column>
-						<p:column headerText="Descrição" styleClass="text-center">
-							<h:outputText value="#{campanhas.descricao}" />
-						</p:column>
 
-						<p:column id="clAtualizar" style="width: 55px; text-align: center"
-							resizable="false" headerText="Atualizar">
-							<p:commandButton id="btAtualizar" icon="ui-icon-pencil" 
-								title="Atualizar" action="#{listCampanha.excluir(campanha)}" />
-						</p:column>
 						<p:column id="clExcluir" style="width: 43px; text-align: center"
 							resizable="false" headerText="Excluir">
 							<p:commandButton id="btExcluir" icon="ui-icon-closethick"
 								title="Excluir"
-								actionListener="#{listCampanha.excluir(campanha)}"
+								actionListener="#{listCampanha.excluir(campanhas)}"
 								update="listaCampanhas"
-								onclick="if (!confirm('Confirma exclusão do usuário?')) return false" />
+								onclick="if (!confirm('Excluir campanha?')) return false" />
 						</p:column>
 
 					</p:dataTable>

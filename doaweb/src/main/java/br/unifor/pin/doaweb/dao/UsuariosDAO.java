@@ -73,7 +73,6 @@ public class UsuariosDAO {
 		String jpql = "select u from Usuarios u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("id", id);
-
 		try {
 			return (Usuarios) query.getSingleResult();
 		} catch (NoResultException e) {

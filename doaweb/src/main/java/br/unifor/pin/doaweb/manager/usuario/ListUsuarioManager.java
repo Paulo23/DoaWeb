@@ -27,13 +27,11 @@ public class ListUsuarioManager {
 	
 	public void lista(){
 		
-//		usuarios = usuarioBO.listaUsuarioPorNome(nome);
 		
 	}
 	
-	public void excluir(Usuarios usuario){
-		usuarioBO.excluir(usuario);
-//		usuarios = usuarioBO.listaUsuarioPorNome(nome);
+	public void excluirUsuario(Usuarios usuario){
+		usuarioBO.excluirUsuario(usuario);
 	}
 	
 	public String preparaAtualizar(Usuarios usuario){

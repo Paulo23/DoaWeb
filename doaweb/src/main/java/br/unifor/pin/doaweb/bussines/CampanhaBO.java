@@ -38,20 +38,26 @@ public class CampanhaBO {
 		campanha = campanhasDAO.buscaCampanhaPorId(campanha.getId());
 		campanhasDAO.excluir(campanha);
 	}
+
+	@RolesAllowed(value = { "LISTAR_CAMPANHAS" })
+	@Loggable(enable = false)
+	public List<Campanhas> buscarCampPorInst(Usuarios instituicao) {
+		return campanhasDAO.buscaCampanhasPorInstituicao(instituicao);
+	}
+	
+	@RolesAllowed(value = { "LISTAR_TODAS_CAMPANHAS" })
+	@Loggable(enable = false)
+	public List<Campanhas> buscarTodasCamp() {
+		List<Campanhas> campanhas = campanhasDAO.buscaTodasCampanhas();
+		return campanhas;
+	}
 	
 	public void atualizar(){
 		
 	}
-
+	
 	public Instituicoes getInstituicaoCampanha() {
 		return (Instituicoes) segurancaTo.getUsuario();
 	}
-
-	@RolesAllowed(value = { "LISTAR_CAMPANHAS" })
-	@Loggable(enable = false)
-	public List<Campanhas> buscarCamp(Usuarios id) {
-		return campanhasDAO.buscaCampanhas(id);
-	}
-	
 
 }

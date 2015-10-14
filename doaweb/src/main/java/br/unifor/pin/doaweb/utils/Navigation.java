@@ -12,7 +12,9 @@ public class Navigation {
 	public static final String CADASTRO = "cadastro";
 	public static final String EXCLUIR = "excluir";
 	
-	public static final String LIST = "listar";
+	public static final String LISTCAMPINST = "listaCampInst";
+	public static final String LISTCAMPDOAD = "listarCampDoad";
+
 
 
 
