@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.abstractfactory.UsuarioFactory;
-import br.unifor.pin.doaweb.bussines.InstituicaoBO;
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
@@ -29,10 +28,6 @@ public class CadUsuarioManager {
 
 	@Autowired
 	private UsuarioBO usuarioBO;
-	@Autowired
-	private InstituicaoBO instituicaoBO;
-	@Autowired
-	private ListUsuarioManager listUsuario;
 
 	// atributos usuario
 	private String email;
@@ -139,7 +134,7 @@ public class CadUsuarioManager {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
+	}	
 
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
