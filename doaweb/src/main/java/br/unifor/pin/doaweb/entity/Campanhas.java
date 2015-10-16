@@ -40,7 +40,7 @@ public class Campanhas {
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuarios instituicao;
+	private Instituicoes instituicao;
 
 	public Integer getId() {
 		return id;
@@ -83,13 +83,10 @@ public class Campanhas {
 	}
 
 	public Instituicoes getInstituicao() {
-		return (Instituicoes) instituicao;
+		return instituicao;
 	}
 
 	public void setInstituicao(Instituicoes instituicao) {
 		this.instituicao = instituicao;
 	}
-	
-	
-
 }
