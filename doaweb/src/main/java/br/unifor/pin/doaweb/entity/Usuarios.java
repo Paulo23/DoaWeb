@@ -24,6 +24,9 @@ public class Usuarios {
 
 	@Column(nullable = false)
 	private String senha;
+	
+	@Column(name = "endereco",  nullable=false)
+	private String endereco;
 
 	@Column(nullable = false)
 	private boolean ativo;
@@ -58,6 +61,14 @@ public class Usuarios {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	/*

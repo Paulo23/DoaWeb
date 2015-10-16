@@ -32,19 +32,18 @@ public class CadUsuarioManager {
 	// atributos usuario
 	private String email;
 	private String senha;
+	private String endereco;
 	private TipoUsuario tipoUsuario;
 
 	// atributos doador
 	private String nome;
 	private Date dataNascimento;
 	private String cpf;
-	private String endDoador;
 	private String telDoador;
 
 	// atributos instituicao
 	private String razaoSocial;
 	private String cnpj;
-	private String end;
 	private String tel;
 	private String nomeBanco;
 	private String operacao;
@@ -59,17 +58,16 @@ public class CadUsuarioManager {
 		
 		usuario.setEmail(getEmail());
 		usuario.setSenha(Encripta.encripta(getSenha()));
+		usuario.setEndereco(getEndereco());
 
 		if(usuario instanceof Doadores){
 			((Doadores) usuario).setNome(getNome());
 			((Doadores) usuario).setCpf(getCpf());
 			((Doadores) usuario).setDataNascimento(getDataNascimento());
-			((Doadores) usuario).setEndDoador(getEndDoador());
 			((Doadores) usuario).setTelDoador(getTelDoador());
 		} else {
 			((Instituicoes) usuario).setCnpj(getCnpj());
 			((Instituicoes) usuario).setRazaoSocial(getRazaoSocial());
-			((Instituicoes) usuario).setEnd(getEnd());
 			((Instituicoes) usuario).setTelefone(getTel());
 			((Instituicoes) usuario).setDesc(getDescricao());
 			((Instituicoes) usuario).setNomeBanco(getNomeBanco());
@@ -208,14 +206,6 @@ public class CadUsuarioManager {
 		this.conta = conta;
 	}
 
-	public String getEnd() {
-		return end;
-	}
-
-	public void setEnd(String end) {
-		this.end = end;
-	}
-
 	public String getTel() {
 		return tel;
 	}
@@ -232,14 +222,6 @@ public class CadUsuarioManager {
 		this.descricao = descricao;
 	}
 
-	public String getEndDoador() {
-		return endDoador;
-	}
-
-	public void setEndDoador(String endDoador) {
-		this.endDoador = endDoador;
-	}
-
 	public String getTelDoador() {
 		return telDoador;
 	}
@@ -247,6 +229,16 @@ public class CadUsuarioManager {
 	public void setTelDoador(String telDoador) {
 		this.telDoador = telDoador;
 	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	
 
 	
 	

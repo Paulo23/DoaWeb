@@ -44,6 +44,12 @@
 						strongLabel="Forte" />
 					<p:message for="senha" />
 				</h:panelGrid>
+				
+				<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="endDoador" value="#{cadUsuario.endereco}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="endDoador" />
 
 
 				<!-- Painel do Doador -->
@@ -62,12 +68,6 @@
 					<p:inputMask id="cpf" value="#{cadUsuario.cpf}" mask="999.999.999-99" required="true"
 						requiredMessage="Campo Obrigatório"/>
 					<p:message for="cpf" />
-
-					<p:outputLabel value="Endereço: " />
-					<font color="red">*</font>
-					<p:inputText id="endDoador" value="#{cadUsuario.endDoador}" required="true"
-						requiredMessage="Campo Obrigatório" />
-					<p:message for="endDoador" />
 					
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
@@ -98,12 +98,6 @@
 					<p:inputText id="cnpj" value="#{cadUsuario.cnpj}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cnpj" />
-
-					<p:outputLabel value="Endereço: " />
-					<font color="red">*</font>
-					<p:inputText id="end" value="#{cadUsuario.end}" required="true"
-						requiredMessage="Campo Obrigatório" />
-					<p:message for="end" />
 
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>

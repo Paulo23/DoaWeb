@@ -25,9 +25,6 @@ public class Doadores extends Usuarios {
 	@Column(name = "telefone", nullable = false)
 	private String telDoador;
 	
-	@Column(name = "endereco", nullable = false)
-	private String endDoador;
-	
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
@@ -58,14 +55,6 @@ public class Doadores extends Usuarios {
 
 	public void setTelDoador(String telDoador) {
 		this.telDoador = telDoador;
-	}
-
-	public String getEndDoador() {
-		return endDoador;
-	}
-
-	public void setEndDoador(String endDoador) {
-		this.endDoador = endDoador;
 	}
 
 	
