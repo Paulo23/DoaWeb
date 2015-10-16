@@ -59,8 +59,8 @@
 
 					<p:outputLabel value="CPF:" />
 					<font color="red">*</font>
-					<p:inputText id="cpf" value="#{cadUsuario.cpf}" required="true"
-						requiredMessage="Campo Obrigatório" />
+					<p:inputMask id="cpf" value="#{cadUsuario.cpf}" mask="999.999.999-99" required="true"
+						requiredMessage="Campo Obrigatório"/>
 					<p:message for="cpf" />
 
 					<p:outputLabel value="Endereço: " />
@@ -77,7 +77,7 @@
 
 					<p:outputLabel for="dataNascimento" value="Data Nascimento:" />
 					<font color="red">*</font>
-					<p:calendar id="dataNascimento"
+					<p:calendar id="dataNascimento" mask="99/99/9999"
 						value="#{cadUsuario.dataNascimento}" showOn="button" />
 				</h:panelGrid>
 
