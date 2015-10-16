@@ -1,8 +1,6 @@
 package br.unifor.pin.doaweb.entity;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.INTEGER)
 public class Usuarios {
 
 	@Id
@@ -27,6 +24,9 @@ public class Usuarios {
 
 	@Column(nullable = false)
 	private String senha;
+	
+	@Column(name = "endereco",  nullable=false)
+	private String endereco;
 
 	@Column(nullable = false)
 	private boolean ativo;
@@ -61,6 +61,14 @@ public class Usuarios {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	/*

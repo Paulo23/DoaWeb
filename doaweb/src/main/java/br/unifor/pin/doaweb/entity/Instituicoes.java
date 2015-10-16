@@ -22,9 +22,6 @@ public class Instituicoes extends Usuarios {
 	@Column(name="razao_social", nullable = false)
 	private String razaoSocial;
 	
-	@Column(name = "endereco",  nullable=false)
-	private String end;
-	
 	@Column(nullable = false)
 	private String telefone;
 
@@ -68,14 +65,6 @@ public class Instituicoes extends Usuarios {
 
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
-	}
-	
-	public String getEnd() {
-		return end;
-	}
-
-	public void setEnd(String end) {
-		this.end = end;
 	}
 
 	public String getTelefone() {

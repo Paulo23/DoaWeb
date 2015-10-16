@@ -12,6 +12,7 @@ import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
+import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 
@@ -21,7 +22,9 @@ import br.unifor.pin.doaweb.utils.Navigation;
 public class CadCampanhaManager {
 
 	@Autowired
-	public CampanhaBO campanhaBO;
+	private CampanhaBO campanhaBO;
+	@Autowired
+	private SegurancaTO segurancaTO;
 
 	private Date dataInicioCampanhas;
 	private Date dataTerminoCampanhas;
@@ -34,7 +37,7 @@ public class CadCampanhaManager {
 		campanha.setDataInicioCampanhas(getDataInicioCampanhas());
 		campanha.setDataTerminoCampanhas(getDataTerminoCampanhas());
 		campanha.setDescricao(getDescricao());
-		campanha.setInstituicao(campanhaBO.getInstituicaoCampanha());
+		campanha.setInstituicao((Instituicoes)segurancaTO.getUsuario());
 		campanha.setTipo(getTipo());
 		
 		try {

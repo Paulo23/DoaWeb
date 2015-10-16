@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
+import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 
 @RequestScoped
@@ -19,21 +20,21 @@ public class ListCampanhaManager {
 
 	@Autowired
 	private CampanhaBO campanhaBO;
+	@Autowired
+	private SegurancaTO segurancaTO;
 
 	private List<Campanhas> ltCampanhas;
 
 	private Campanhas campanha;
 
 	public String listarMinhasCampanhas() {
-		ltCampanhas = campanhaBO.buscarCampPorInst(campanhaBO
-				.getInstituicaoCampanha());
+		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
 		return Navigation.LISTCAMPINST;
 	}
 
 	public void excluir(Campanhas campanha) {
 		campanhaBO.excluirCampanha(campanha);
-		ltCampanhas = campanhaBO.buscarCampPorInst(campanhaBO
-				.getInstituicaoCampanha());
+		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
 	}
 
 	public List<Campanhas> getLtCampanhas() {

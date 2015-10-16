@@ -58,7 +58,7 @@ public class CampanhaTestDAO {
 		instituicao.setCnpj("1234567");
 		instituicao.setRazaoSocial("Lar Santa");
 		instituicao.setDesc("testes");
-		instituicao.setEnd("fortaleza-ce");
+		instituicao.setEndereco("fortaleza-ce");
 		instituicao.setTelefone("9999000");
 		
 		instituicaoDAO.salvar(instituicao);

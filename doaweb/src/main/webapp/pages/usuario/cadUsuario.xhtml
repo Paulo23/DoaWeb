@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/templates/template_login.xhtml">
 	<ui:define name="content">
 
 		<h:form id="formCadUsuario">
@@ -31,7 +31,9 @@
 					<p:outputLabel value="Email: " />
 					<font color="red">*</font>
 					<p:inputText id="email" value="#{cadUsuario.email}" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório">
+							<f:validator validatorId="validators.EmailValidator" />
+						</p:inputText>
 					<p:message for="email" />
 
 					<p:outputLabel value="Senha: " />
@@ -42,6 +44,12 @@
 						strongLabel="Forte" />
 					<p:message for="senha" />
 				</h:panelGrid>
+				
+				<p:outputLabel value="Endereço: " />
+					<font color="red">*</font>
+					<p:inputText id="endDoador" value="#{cadUsuario.endereco}" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<p:message for="endDoador" />
 
 
 				<!-- Painel do Doador -->
@@ -57,15 +65,9 @@
 
 					<p:outputLabel value="CPF:" />
 					<font color="red">*</font>
-					<p:inputText id="cpf" value="#{cadUsuario.cpf}" required="true"
-						requiredMessage="Campo Obrigatório" />
+					<p:inputMask id="cpf" value="#{cadUsuario.cpf}" mask="999.999.999-99" required="true"
+						requiredMessage="Campo Obrigatório"/>
 					<p:message for="cpf" />
-
-					<p:outputLabel value="Endereço: " />
-					<font color="red">*</font>
-					<p:inputText id="endDoador" value="#{cadUsuario.endDoador}" required="true"
-						requiredMessage="Campo Obrigatório" />
-					<p:message for="endDoador" />
 					
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
@@ -75,7 +77,7 @@
 
 					<p:outputLabel for="dataNascimento" value="Data Nascimento:" />
 					<font color="red">*</font>
-					<p:calendar id="dataNascimento"
+					<p:calendar id="dataNascimento" mask="99/99/9999"
 						value="#{cadUsuario.dataNascimento}" showOn="button" />
 				</h:panelGrid>
 
@@ -96,12 +98,6 @@
 					<p:inputText id="cnpj" value="#{cadUsuario.cnpj}" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cnpj" />
-
-					<p:outputLabel value="Endereço: " />
-					<font color="red">*</font>
-					<p:inputText id="end" value="#{cadUsuario.end}" required="true"
-						requiredMessage="Campo Obrigatório" />
-					<p:message for="end" />
 
 					<p:outputLabel value="Telefone: " />
 					<font color="red">*</font>
@@ -155,7 +151,7 @@
 				<br />
 				<h:panelGrid columns="3" styleClass="panelgrid">
 					<p:commandButton value="Voltar"
-						action="#{listUsuario.preparaListar}" ajax="false"
+						action="#{cadUsuario.voltar}" ajax="false"
 						immediate="true" />
 					<p:commandButton value="Salvar" action="#{cadUsuario.salvar}"
 						ajax="false" />
