@@ -1,5 +1,6 @@
 package br.unifor.pin.doaweb.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
 
 import br.unifor.pin.doaweb.entity.Campanhas;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 
 @Repository
@@ -38,7 +40,15 @@ public class CampanhasDAO {
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("instituicao", instituicao);
 		return (List<Campanhas>) query.getResultList();
-
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Campanhas> buscaCampanhasPorInstituicaoData(Instituicoes instituicao, Date data){
+		String jpql = "select c from Campanhas c where c.instituicao = :instituicao and c.dataInicioCampanhas = :data";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("instituicao", instituicao);
+		query.setParameter("data", data);
+		return (List<Campanhas>) query.getResultList();
 	}
 
 	public Campanhas buscaCampanhaPorId(Integer id) {
@@ -51,7 +61,7 @@ public class CampanhasDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaTodasCampanhas() {
-		String jpql = "select bean from Campanhas bean";
+		String jpql = "select c from Campanhas c";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

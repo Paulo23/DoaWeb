@@ -1,5 +1,6 @@
 package br.unifor.pin.doaweb.manager.instituicao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 
@@ -24,8 +26,15 @@ public class ListCampanhaManager {
 	private SegurancaTO segurancaTO;
 
 	private List<Campanhas> ltCampanhas;
+	private Date dataInicioFiltro;
 
 	private Campanhas campanha;
+
+	public String listarMinhasCampanhasPorFiltro() {
+		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData((Instituicoes) segurancaTO.getUsuario(),
+				dataInicioFiltro);
+		return Navigation.LISTCAMPINST;
+	}
 
 	public String listarMinhasCampanhas() {
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
@@ -51,6 +60,14 @@ public class ListCampanhaManager {
 
 	public void setCampanha(Campanhas campanha) {
 		this.campanha = campanha;
+	}
+
+	public Date getDataInicioFiltro() {
+		return dataInicioFiltro;
+	}
+
+	public void setDataInicioFiltro(Date dataInicioFiltro) {
+		this.dataInicioFiltro = dataInicioFiltro;
 	}
 
 }

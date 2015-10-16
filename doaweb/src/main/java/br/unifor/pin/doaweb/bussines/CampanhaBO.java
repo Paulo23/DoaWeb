@@ -1,5 +1,6 @@
 package br.unifor.pin.doaweb.bussines;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
-import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 
 @Component
@@ -27,20 +28,21 @@ public class CampanhaBO {
 		campanhasDAO.atualizar(campanha);
 	}
 	
-	@RolesAllowed(value = { "EXCLUIR_CAMPANHA" })
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void excluirCampanha(Campanhas campanha) {
 		campanha = campanhasDAO.buscaCampanhaPorId(campanha.getId());
 		campanhasDAO.excluir(campanha);
 	}
 
-	@RolesAllowed(value = { "LISTAR_CAMPANHAS" })
 	@Loggable(enable = false)
 	public List<Campanhas> buscarCampPorInst(Usuarios instituicao) {
 		return campanhasDAO.buscaCampanhasPorInstituicao(instituicao);
 	}
 	
-	@RolesAllowed(value = { "LISTAR_TODAS_CAMPANHAS" })
+	public List<Campanhas> buscaCampanhasPorInstituicaoData(Instituicoes instituicao, Date data){
+		return campanhasDAO.buscaCampanhasPorInstituicaoData(instituicao, data);
+	}
+	
 	@Loggable(enable = false)
 	public List<Campanhas> buscarTodasCamp() {
 		List<Campanhas> campanhas = campanhasDAO.buscaTodasCampanhas();

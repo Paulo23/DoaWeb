@@ -14,9 +14,10 @@
 				<p:messages id="messages" showDetail="true" autoUpdate="true"
 					closable="true" />
 			</h:panelGrid>
-
-			<p:outputLabel>
-
+			
+			
+			<p:calendar value="#{listCampanha.dataInicioFiltro}" mask="99/99/9999" />
+			<h:commandButton value="Filtrar" action="#{listCampanha.listarMinhasCampanhasPorFiltro}" />
 				<!-- Tabela campanhas -->
 
 				<h:panelGrid columns="3" styleClass="panelgrid">
@@ -27,10 +28,14 @@
 						emptyMessage="Nenhum resultado encontrado">
 
 						<p:column headerText="Início da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataInicioCampanhas}" />
+							<h:outputText value="#{campanhas.dataInicioCampanhas}" >
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 						<p:column headerText="Fim da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataTerminoCampanhas}" />
+							<h:outputText value="#{campanhas.dataTerminoCampanhas}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+							</h:outputText>
 						</p:column>
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
 							<h:outputText value="#{campanhas.tipo}" />
@@ -48,7 +53,7 @@
 					</p:dataTable>
 
 				</h:panelGrid>
-			</p:outputLabel>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>
