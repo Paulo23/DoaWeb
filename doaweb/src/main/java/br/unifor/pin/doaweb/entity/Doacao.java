@@ -41,7 +41,7 @@ public class Doacao {
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuarios usuario;
+	private Doadores doador;
 
 	public Integer getId() {
 		return id;
@@ -75,12 +75,12 @@ public class Doacao {
 		this.campanha = campanha;
 	}
 
-	public Usuarios getUsuario() {
-		return usuario;
+	public Doadores getDoador() {
+		return doador;
 	}
 
-	public void setUsuario(Usuarios usuario) {
-		this.usuario = usuario;
+	public void setDoador(Doadores doador) {
+		this.doador = doador;
 	}
 
 	public String getInformacoes() {

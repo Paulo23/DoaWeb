@@ -1,10 +1,13 @@
 package br.unifor.pin.doaweb.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,6 +27,9 @@ public class Doadores extends Usuarios {
 	
 	@Column(name = "telefone", nullable = false)
 	private String telDoador;
+	
+	@OneToMany(mappedBy = "doador", fetch=FetchType.EAGER)
+	private List<Doacao> doacoes;
 	
 	public Date getDataNascimento() {
 		return dataNascimento;

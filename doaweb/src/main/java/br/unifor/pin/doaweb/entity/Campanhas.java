@@ -1,15 +1,19 @@
 package br.unifor.pin.doaweb.entity;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -41,6 +45,9 @@ public class Campanhas {
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Instituicoes instituicao;
+	
+	@OneToMany(mappedBy = "campanha", fetch=FetchType.EAGER)
+	private List<Doacao> doacoes;
 
 	public Integer getId() {
 		return id;
