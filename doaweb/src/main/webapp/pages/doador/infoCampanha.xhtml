@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formInfCampanhas">
+			<h2>Informações sobre a campanha</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<p:outputLabel>
+
+				<!-- Painel Grid Valores -->
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
+
+					<p:outputLabel id="nomeInst" value="Nome da Instituição: " />
+					<p:outputLabel id="nome" value="#{realizarDoac.nomeInstituicao}" />
+					<p:outputLabel id="tipoDoac" value="Tipo de Campanha: " />
+					<p:outputLabel id="tip" value="#{realizarDoac.tipo}" />
+					<p:outputLabel id="descricao" value="Descrição: " />
+					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
+
+					<p:outputLabel id="obsvs" value="Observações: " />
+					<!--  	<p:inputText id="obs" value="#{realizarDoac.obs} " /> -->
+
+				</h:panelGrid>
+
+				<!-- Painel Grid Botões -->
+
+				<h:panelGrid columns="2" styleClass="panelgrid">
+					<p:commandButton value="Realizar doação"
+						action="#{realizarDoac.doar()}" ajax="false" />
+					<p:commandButton value="Voltar" action="#{realizarDoac.voltar()}"
+						ajax="false" immediate="true" />
+				</h:panelGrid>
+
+			</p:outputLabel>
+		</h:form>
+	</ui:define>
+</ui:composition>

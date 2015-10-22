@@ -42,11 +42,11 @@
 	</navigation-rule>
 
 	<!-- Doador -->
-	<navigation-rule>
+		<navigation-rule>
 		<from-view-id>/pages/doador/realDoacao.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>voltar</from-outcome>
-			<to-view-id>/pages/doador/infoUsuario.xhtml</to-view-id>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/doador/infoCampanha.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -57,7 +57,7 @@
 			<to-view-id>/pages/login/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>listaCampInst</from-outcome>
@@ -65,6 +65,13 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>listaDoacDoad</from-outcome>
+			<to-view-id>/pages/doador/minDoacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>listarCampDoad</from-outcome>

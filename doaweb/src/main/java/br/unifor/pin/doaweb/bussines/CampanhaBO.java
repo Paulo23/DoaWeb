@@ -52,5 +52,9 @@ public class CampanhaBO {
 	public void atualizar(){
 		
 	}
+	
+	public void buscarCampanhaPorId(Integer id){
+		campanhasDAO.buscaCampanhaPorId(id);
+	}
 
 }

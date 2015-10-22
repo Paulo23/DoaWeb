@@ -23,7 +23,7 @@
 				<p:menuitem value="Realizar Doação"
 					action="#{realizarDoac.listarTodasCampanhas}" />
 				<p:menuitem value="Minhas Doações"
-					action="/pages/doador/minDoacao.xhtml" />
+					action="#{listDoacReal.listarMinhasDoacRealizadas}" />
 			</p:submenu>
 			<p:submenu label="Perfil Doador"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">

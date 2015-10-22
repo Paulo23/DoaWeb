@@ -1,14 +1,17 @@
 package br.unifor.pin.doaweb.dao;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.entity.Doacao;
+import br.unifor.pin.doaweb.entity.Usuarios;
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -27,6 +30,14 @@ public class DoacaoDAO {
 
 	public void excluir(Doacao doacao) {
 		entityManager.remove(doacao);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Doacao> buscaDoacaoPorDoador(Usuarios doador) {
+		String jpql = "select u from Doacao u where u.doador = :doador";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("doador", doador);
+		return (List<Doacao>) query.getResultList();
 	}
 
 }
