@@ -26,6 +26,7 @@ public class ListCampanhaManager {
 	private SegurancaTO segurancaTO;
 
 	private List<Campanhas> ltCampanhas;
+	
 	private Date dataInicioFiltro;
 
 	private Campanhas campanha;

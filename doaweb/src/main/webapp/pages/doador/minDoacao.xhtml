@@ -25,12 +25,12 @@
 						emptyMessage="Nenhum resultado encontrado">
 
 						<p:column headerText="Data da Doação" styleClass="text-center">
-							<h:outputText value="#{doacao.tipoDeDoacao}">
+							<h:outputText value="#{doacoes.dataDoacao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
-							<h:outputText value="#{doacao.tipoDeDoacao}" />
+							<h:outputText value="#{doacoes.tipoDeDoacao}" />
 						</p:column>
 
 
