@@ -49,6 +49,13 @@
 								update="listaCampanhas"
 								onclick="if (!confirm('Excluir campanha?')) return false" />
 						</p:column>
+						
+						<p:column id="clVisualizar" style="width: 43px; text-align: center"
+							resizable="false" headerText="Visualizar Doacoes">
+							<p:commandButton id="btVzlDoac" icon="ui-icon-closethick"
+								title="Doacoes"
+								actionListener="#{listCampanha.listarNaCampanha}"/>
+						</p:column>
 
 					</p:dataTable>
 

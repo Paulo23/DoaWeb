@@ -14,8 +14,8 @@ public class Navigation {
 	
 	public static final String LISTCAMPINST = "listaCampInst";
 	public static final String LISTCAMPDOAD = "listarCampDoad";
-
 	public static final String LISTDOACDOAD = "listaDoacDoad";
+	public static final String LISTDOANACAMP = "listaDoaNaCamp";
 
 
 
