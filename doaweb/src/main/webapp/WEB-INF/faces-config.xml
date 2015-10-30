@@ -35,7 +35,7 @@
 
 	<navigation-rule>
 		<from-view-id>/pages/instituicao/listCampanhas.xhtml</from-view-id>
-			<navigation-case>
+		<navigation-case>
 			<from-outcome>listaDoaNaCamp</from-outcome>
 			<to-view-id>/pages/instituicao/listDoacPorCamp.xhtml</to-view-id>
 		</navigation-case>
@@ -50,7 +50,7 @@
 	</navigation-rule>
 
 	<!-- Doador -->
-		<navigation-rule>
+	<navigation-rule>
 		<from-view-id>/pages/doador/realDoacao.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
@@ -67,22 +67,15 @@
 	</navigation-rule>
 
 	<navigation-rule>
+		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>listaCampInst</from-outcome>
 			<to-view-id>/pages/instituicao/listCampanhas.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>
-	
-
-	
-	<navigation-rule>
 		<navigation-case>
 			<from-outcome>listaDoacDoad</from-outcome>
 			<to-view-id>/pages/doador/minDoacao.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
 		<navigation-case>
 			<from-outcome>listarCampDoad</from-outcome>
 			<to-view-id>/pages/doador/realDoacao.xhtml</to-view-id>

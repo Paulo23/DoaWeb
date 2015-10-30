@@ -24,24 +24,24 @@ public class ListCampanhaManager {
 
 	@Autowired
 	private CampanhaBO campanhaBO;
-	
+
 	@Autowired
 	private DoacaoBO doacaoBO;
-	
+
 	@Autowired
 	private SegurancaTO segurancaTO;
 
 	private List<Campanhas> ltCampanhas;
-	
+
 	private List<Doacao> ltDoacoes;
-	
+
 	private Date dataInicioFiltro;
 
 	private Campanhas campanha;
 
 	public String listarMinhasCampanhasPorFiltro() {
-		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData((Instituicoes) segurancaTO.getUsuario(),
-				dataInicioFiltro);
+		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData(
+				(Instituicoes) segurancaTO.getUsuario(), dataInicioFiltro);
 		return Navigation.LISTCAMPINST;
 	}
 
@@ -49,16 +49,15 @@ public class ListCampanhaManager {
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
 		return Navigation.LISTCAMPINST;
 	}
-	
-	public String listarNaCampanha(){
+
+	public String listarNaCampanha() {
 		return Navigation.LISTDOANACAMP;
 	}
-	
-	//public String listarDoacaoesNaCampanha(Campanhas doaCamp){
-	//ltDoacoes = doacaoBO.buscarDoacPorCamp(doaCamp);
-	//return Navigation.LISTDOANACAMP;
-		//System.out.println("botao funciona");
-	//}
+
+	public String listarDoacaoesNaCampanha(Campanhas doaCamp) {
+		ltDoacoes = doacaoBO.buscarDoacPorCamp(doaCamp);
+		return Navigation.LISTDOANACAMP;
+	}
 
 	public void excluir(Campanhas campanha) {
 		campanhaBO.excluirCampanha(campanha);
@@ -96,7 +95,5 @@ public class ListCampanhaManager {
 	public void setLtDoacoes(List<Doacao> ltDoacoes) {
 		this.ltDoacoes = ltDoacoes;
 	}
-	
-	
 
 }

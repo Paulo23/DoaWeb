@@ -35,6 +35,7 @@ public class RealDoacaoManager {
 	private String descricao;
 	private String tipo;
 	private String obs;
+	private Double valorDac;
 
 	private Campanhas campanhas;
 
@@ -61,8 +62,10 @@ public class RealDoacaoManager {
 		doacao.setCampanha(getCamps());
 		doacao.setDoador((Doadores) segurancaTO.getUsuario());
 		doacao.setDataDoacao(getCamps().getDataInicioCampanhas());
-	//	doacao.setInformacoes(descricao);
 		doacao.setTipoDeDoacao(getCamps().getTipo());
+		doacao.setValor(getValorDac());
+		//	doacao.setInformacoes(descricao);
+
 
 		try {
 			this.doacaoBO.salvar(doacao);
@@ -131,5 +134,15 @@ public class RealDoacaoManager {
 	public void setCamps(Campanhas camps) {
 		this.camps = camps;
 	}
+
+	public Double getValorDac() {
+		return valorDac;
+	}
+
+	public void setValorDac(Double valorDac) {
+		this.valorDac = valorDac;
+	}
+	
+	
 
 }

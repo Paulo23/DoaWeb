@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +24,7 @@ import br.unifor.pin.doaweb.exceptions.DAOException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
-@Transactional
+@org.springframework.transaction.annotation.Transactional
 public class DoacoesTest {
 
 	@Autowired
@@ -96,6 +95,63 @@ public class DoacoesTest {
 
 		doacaoDAO.salvar(doacao);
 
+	}
+	
+	@Test
+	public void testaBuscadeDoacoesDaCampanha() throws ParseException, DAOException{
+		
+		Instituicoes instituicao = new Instituicoes();
+
+		instituicao.setAgencia("13");
+		instituicao.setNomeBanco("Banco Brasil");
+		instituicao.setOperacao("3");
+		instituicao.setConta("456");
+
+		instituicao.setAtivo(true);
+
+		instituicao.setEmail("admin6@sdsds.com");
+		instituicao.setSenha("4343353");
+		instituicao.setCnpj("34342334");
+		instituicao.setRazaoSocial("Lar Santa Esperança");
+		instituicao.setDesc("testes");
+		instituicao.setEndereco("fortaleza-ce");
+		instituicao.setTelefone("9999000");
+
+		dao.salvar(instituicao);
+
+		Doadores doadores = new Doadores();
+
+		doadores.setAtivo(true);
+		doadores.setCpf("232342");
+		doadores.setDataNascimento(stringToDate());
+		doadores.setEmail("easda@email.com");
+		doadores.setEndereco("Rua");
+		doadores.setNome("Lucas Ruan");
+		doadores.setSenha("123");
+		doadores.setTelDoador("99999");
+
+		dao.salvar(doadores);
+
+		Campanhas campanha = new Campanhas();
+		campanha.setDescricao("teste de testes");
+		campanha.setTipo(TipoDoacao.DINHEIRO);
+		campanha.setDataInicioCampanhas(stringToDate());
+		campanha.setDataTerminoCampanhas(stringToDate());
+		campanha.setInstituicao(instituicao);
+
+		campanhasDAO.salvar(campanha);
+
+		Doacao doacao = new Doacao();
+
+		doacao.setCampanha(campanha);
+		doacao.setDataDoacao(stringToDate());
+		doacao.setInformacoes("test");
+		doacao.setTipoDeDoacao(TipoDoacao.DINHEIRO);
+		doacao.setDoador(doadores);
+
+		doacaoDAO.salvar(doacao);
+		
+		doacaoDAO.buscaDoacaoPorCampanha(campanha);
 	}
 
 }

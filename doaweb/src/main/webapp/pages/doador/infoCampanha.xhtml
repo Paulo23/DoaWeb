@@ -21,13 +21,15 @@
 
 				<h:panelGrid columns="2" styleClass="panelgrid">
 
+					<p:inputText id="valorDoacao" value="#{realizarDoac.valorDac}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+
 					<p:outputLabel id="nomeInst" value="Nome da Instituição: " />
 					<p:outputLabel id="nome" value="#{realizarDoac.nomeInstituicao}" />
 					<p:outputLabel id="tipoDoac" value="Tipo de Campanha: " />
 					<p:outputLabel id="tip" value="#{realizarDoac.tipo}" />
 					<p:outputLabel id="descricao" value="Descrição: " />
 					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
-
 					<p:outputLabel id="obsvs" value="Observações: " />
 					<!--  	<p:inputText id="obs" value="#{realizarDoac.obs} " /> -->
 

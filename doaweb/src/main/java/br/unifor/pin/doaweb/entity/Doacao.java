@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
 @Entity
@@ -34,6 +35,13 @@ public class Doacao {
 	
 	@Column(name = "inf_doacao")
 	private String informacoes;
+	
+	@Column(name = "valor")
+	private Double valor;
+
+	@Column(name = "status_doacao")
+	@Enumerated(EnumType.ORDINAL)
+	private StatusDoacao status;
 
 	@ManyToOne
 	@JoinColumn(name = "id_campanhas")
@@ -90,6 +98,14 @@ public class Doacao {
 	public void setInformacoes(String informacoes) {
 		this.informacoes = informacoes;
 	}
-	
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
 
 }

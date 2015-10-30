@@ -22,24 +22,24 @@
 				<h:panelGrid columns="3" styleClass="panelgrid">
 
 					<p:dataTable id="realizarDoac" value="#{realizarDoac.ltTodasCampanhas}"
-						var="campanhas" paginator="true" paginatorPosition="bottom"
+						var="campanha" paginator="true" paginatorPosition="bottom"
 						rows="5" emptyMessage="Nenhum resultado encontrado">
 
 						<p:column headerText="Início da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataInicioCampanhas}" />
+							<h:outputText value="#{campanha.dataInicioCampanhas}" />
 						</p:column>
 						<p:column headerText="Fim da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataTerminoCampanhas}" />
+							<h:outputText value="#{campanha.dataTerminoCampanhas}" />
 						</p:column>
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.tipo}" />
+							<h:outputText value="#{campanha.tipo}" />
 						</p:column>
 
 						<p:column id="clDoar" style="width: 55px; text-align: center"
 							resizable="false" headerText="Doar">
 							<p:commandButton id="btDoar" icon="fa fa-plus"
 								title="Realizar Doação"
-								action="#{realizarDoac.preparaDoar(campanhas)}" />
+								action="#{realizarDoac.preparaDoar(campanha)}" />
 						</p:column>
 
 
