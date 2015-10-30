@@ -49,4 +49,6 @@ public class DoacaoDAO {
 		return (List<Doacao>) query.getResultList();
 	}
 
+	
+	
 }
