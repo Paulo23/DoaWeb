@@ -78,7 +78,7 @@
 					<p:outputLabel for="dataNascimento" value="Data Nascimento:" />
 					<font color="red">*</font>
 					<p:calendar id="dataNascimento" mask="99/99/9999"
-						value="#{cadUsuario.dataNascimento}" showOn="button" />
+						value="#{cadUsuario.dataNascimento}" showOn="button" pattern="dd/MM/yyyy"/>
 				</h:panelGrid>
 
 
@@ -95,7 +95,7 @@
 
 					<p:outputLabel value="CNPJ " />
 					<font color="red">*</font>
-					<p:inputText id="cnpj" value="#{cadUsuario.cnpj}" required="true"
+					<p:inputMask id="cnpj" value="#{cadUsuario.cnpj}" mask="99.999.999/9999-99" required="true"
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="cnpj" />
 

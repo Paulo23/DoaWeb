@@ -33,21 +33,23 @@
 					<p:outputLabel for="dataInicioCampanhas" value="Data Início:" />
 					<font color="red">*</font>
 					<p:calendar id="dataInicioCampanhas"
-						value="#{cadCampanha.dataInicioCampanhas}" showOn="button" />
+						value="#{cadCampanha.dataInicioCampanhas}" mask="99/99/9999"
+						showOn="button" pattern="dd/MM/yyyy"/>
 					<br />
 					<p:outputLabel for="dataTerminoCampanhas"
 						value="Data Encerramento:" />
 					<font color="red">*</font>
 					<p:calendar id="dataTerminoCampanhas"
-						value="#{cadCampanha.dataTerminoCampanhas}" showOn="button" />
+						value="#{cadCampanha.dataTerminoCampanhas}" mask="99/99/9999"
+						showOn="button" pattern="dd/MM/yyyy"/>
 
 					<!-- InputText Descrição -->
 
-					<p:outputLabel value="Descrição " />
+					<p:outputLabel value="Descrição: " />
 					<font color="red">*</font>
-					<p:inputText id="descricao" value="#{cadCampanha.descricao}"
-						required="true" requiredMessage="Campo Obrigatório" />
-					<p:message for="descricao" />
+					<p:inputTextarea value="#{cadCampanha.descricao}" rows="4" cols="50" counter="display"
+						maxlength="250" counterTemplate="{0} characters remaining." />
+					<h:outputText id="display" />
 
 				</h:panelGrid>
 

@@ -25,24 +25,24 @@
 					<p:dataTable id="listaCampanhas"
 						value="#{listCampanha.ltCampanhas}" var="campanhas"
 						paginator="true" paginatorPosition="bottom" rows="5"
-						emptyMessage="Nenhum resultado encontrado">
+						emptyMessage="Nenhum resultado encontrado" >
 
-						<p:column headerText="Início da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.dataInicioCampanhas}" >
+						<p:column headerText="Início da Campanha" styleClass="text-center" width="20%">
+							<h:outputText value="#{campanhas.dataInicioCampanhas}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						<p:column headerText="Fim da Campanha" styleClass="text-center">
+						<p:column headerText="Fim da Campanha" styleClass="text-center" width="20%">
 							<h:outputText value="#{campanhas.dataTerminoCampanhas}">
 								<f:convertDateTime pattern="dd/MM/yyyy"/>
 							</h:outputText>
 						</p:column>
-						<p:column headerText="Tipo de Campanha" styleClass="text-center">
-							<h:outputText value="#{campanhas.tipo}" />
+						<p:column headerText="Tipo de Campanha" styleClass="text-center" width="20%">
+							<h:outputText value="#{campanhas.tipo}"/>
 						</p:column>
 
 						<p:column id="clExcluir" style="width: 43px; text-align: center"
-							resizable="false" headerText="Excluir">
+							resizable="false" headerText="Excluir Doações">
 							<p:commandButton id="btExcluir" icon="ui-icon-closethick"
 								title="Excluir"
 								actionListener="#{listCampanha.excluir(campanhas)}"
@@ -51,9 +51,9 @@
 						</p:column>
 						
 						<p:column id="clVisualizar" style="width: 43px; text-align: center"
-							resizable="false" headerText="Visualizar Doacoes">
-							<p:commandButton id="btVzlDoac" icon="ui-icon-closethick"
-								title="Doacoes"
+							resizable="false" headerText="Visualizar Doações">
+							<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
+								title="Doacões"
 								action="#{listCampanha.listarDoacaoesNaCampanha(campanhas)}"/>
 						</p:column>
 

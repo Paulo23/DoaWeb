@@ -16,7 +16,7 @@
 			<p:submenu label="Início"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
 				<p:menuitem value="Página Inícial"
-					action="/pages/usuario/infoUsuario.xhtml"/>
+					action="/pages/usuario/infoUsuario.xhtml" />
 			</p:submenu>
 			<p:submenu label="Doacões"
 				rendered="#{segurancaTO.tipoUsuario == 'DOADOR'}">
@@ -31,6 +31,7 @@
 					action="/pages/doador/atualizarDoador.xhtml" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/doador/excDoador.xhtml" />
+				<p:menuitem value="Sair da Conta" action="/pages/login/login.xhtml" />
 			</p:submenu>
 
 			<p:submenu label="Início"
@@ -51,6 +52,7 @@
 					action="/pages/instituicao/atualizarInstituicao.xhtml" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/usuario/excUsuario.xhtml" />
+				<p:menuitem value="Sair da Conta" action="/pages/login/login.xhtml" />
 			</p:submenu>
 		</p:panelMenu>
 

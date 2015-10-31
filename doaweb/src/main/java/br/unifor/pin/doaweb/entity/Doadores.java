@@ -24,7 +24,7 @@ public class Doadores extends Usuarios {
 
 	@Column(name = "cpf", length = 14, nullable=false, unique = true )
 	private String cpf;
-	
+		
 	@Column(name = "telefone", nullable = false)
 	private String telDoador;
 	
@@ -61,10 +61,6 @@ public class Doadores extends Usuarios {
 
 	public void setTelDoador(String telDoador) {
 		this.telDoador = telDoador;
-	}
-
-	
-	
-	
+	}	
 	
 }
