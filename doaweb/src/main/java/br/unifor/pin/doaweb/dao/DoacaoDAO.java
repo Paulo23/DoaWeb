@@ -49,6 +49,12 @@ public class DoacaoDAO {
 		return (List<Doacao>) query.getResultList();
 	}
 
-	
+	public Doacao buscaDoacaoPorId(Integer id) {
+		String jpql = "select u from Doacao u where u.id = :id";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("id", id);
+		return (Doacao) query.getSingleResult();
+
+	}
 	
 }

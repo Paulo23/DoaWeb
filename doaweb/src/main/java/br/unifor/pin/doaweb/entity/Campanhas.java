@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.unifor.pin.doaweb.enums.StatusCampanha;
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 
 @Entity
@@ -38,6 +40,10 @@ public class Campanhas {
 	@Column(name = "tipo_campanhas", nullable = false, updatable = false)
 	@Enumerated(EnumType.ORDINAL)
 	private TipoDoacao tipo;
+	
+	@Column(name = "status_campanha", nullable = false)
+	@Enumerated(EnumType.ORDINAL)
+	private StatusCampanha status;
 
 	@Column(name = "descricao_campanhas", nullable = false)
 	private String descricao;
@@ -96,4 +102,14 @@ public class Campanhas {
 	public void setInstituicao(Instituicoes instituicao) {
 		this.instituicao = instituicao;
 	}
+
+	public StatusCampanha getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusCampanha status) {
+		this.status = status;
+	}
+	
+	
 }

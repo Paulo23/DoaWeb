@@ -1,5 +1,8 @@
 package br.unifor.pin.doaweb.bussines;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
 
 @Component
 public class CampanhaBO {
@@ -55,6 +59,32 @@ public class CampanhaBO {
 	
 	public void buscarCampanhaPorId(Integer id){
 		campanhasDAO.buscaCampanhaPorId(id);
+	}
+	
+	public String getDateInicioCampanha() {
+		Calendar c = Calendar.getInstance();
+		Date data = c.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(data).toString();
+	}
+	
+	public boolean  validaDataDeTerminoDeCampanha(Date date){
+		return new Date().after(date);
+	}
+	
+	public Date dataSistema(){
+		return new Date();
+	}
+
+	public void setStatusCampanhas(){
+		Date atual = new Date();
+		for (int i = 0; i < campanhasDAO.buscaTodasCampanhas().size() ; i++) {
+			if(campanhasDAO.buscaTodasCampanhas().get(i).getDataTerminoCampanhas().after(atual)){
+				Campanhas camp = campanhasDAO.buscaTodasCampanhas().get(i);
+				camp.setStatus(StatusCampanha.INATIVA);
+				campanhasDAO.atualizar(camp);
+			}
+		}
 	}
 
 }

@@ -11,11 +11,9 @@ import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.DoadoresDAO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
 import br.unifor.pin.doaweb.entity.Doadores;
-import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.exceptions.DAOException;
-import br.unifor.pin.doaweb.to.SegurancaTO;
 
 @Loggable
 @Component
@@ -24,9 +22,7 @@ public class UsuarioBO {
 
 	@Autowired
 	private UsuariosDAO usuarioDAO;
-	
-	private SegurancaTO segurancaTo;
-	
+		
 	@Autowired
 	private DoadoresDAO doadoresDAO;
 	

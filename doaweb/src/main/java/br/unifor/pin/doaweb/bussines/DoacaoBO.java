@@ -10,6 +10,7 @@ import br.unifor.pin.doaweb.dao.DoacaoDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 
 @Component
 public class DoacaoBO {
@@ -30,5 +31,11 @@ public class DoacaoBO {
 	@Loggable(enable = false)
 	public List<Doacao> buscarDoacPorCamp(Campanhas camp) {
 		return doacaoDAO.buscaDoacaoPorCampanha(camp);
+	}
+	
+	public void alteraStatusDOacao(Doacao doacao, StatusDoacao statusDoacao){
+		Doacao doacao2 = doacaoDAO.buscaDoacaoPorId(doacao.getId());
+		doacao2.setStatus(statusDoacao);
+		doacaoDAO.atualizar(doacao2);
 	}
 }

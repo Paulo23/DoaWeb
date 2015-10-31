@@ -107,5 +107,14 @@ public class Doacao {
 		this.valor = valor;
 	}
 
+	public StatusDoacao getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusDoacao status) {
+		this.status = status;
+	}
+
+	
 
 }
