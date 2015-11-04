@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import junit.framework.Assert;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.exceptions.DAOException;
 
@@ -81,6 +84,7 @@ public class DoacoesTest {
 		campanha.setTipo(TipoDoacao.DINHEIRO);
 		campanha.setDataInicioCampanhas(stringToDate());
 		campanha.setDataTerminoCampanhas(stringToDate());
+		campanha.setStatus(StatusCampanha.ATIVA);
 		campanha.setInstituicao(instituicao);
 
 		campanhasDAO.salvar(campanha);
@@ -90,12 +94,25 @@ public class DoacoesTest {
 		doacao.setCampanha(campanha);
 		doacao.setDataDoacao(stringToDate());
 		doacao.setInformacoes("test");
+		doacao.setStatus(StatusDoacao.PENDENTE_VIZUALISACAO);
 		doacao.setTipoDeDoacao(TipoDoacao.DINHEIRO);
 		doacao.setDoador(doadores);
-
+		//testa se doação está sendo persistida em banco
 		doacaoDAO.salvar(doacao);
-
-	}
+		
+		//Tesste do DoacaoDao completo 100% de cobertura
+		Assert.assertNotNull(doacaoDAO.buscaDoacaoPorId(doacao.getId()));
+		
+		Assert.assertNotNull(doacaoDAO.buscaDoacaoPorDoador(doadores));
+		
+		doacao.setStatus(StatusDoacao.VIZUALISADA);
+		
+		doacaoDAO.atualizar(doacao);
+		
+		doacaoDAO.excluir(doacao);
+		
+		
+}
 	
 	@Test
 	public void testaBuscadeDoacoesDaCampanha() throws ParseException, DAOException{
@@ -137,6 +154,7 @@ public class DoacoesTest {
 		campanha.setTipo(TipoDoacao.DINHEIRO);
 		campanha.setDataInicioCampanhas(stringToDate());
 		campanha.setDataTerminoCampanhas(stringToDate());
+		campanha.setStatus(StatusCampanha.ATIVA);
 		campanha.setInstituicao(instituicao);
 
 		campanhasDAO.salvar(campanha);
@@ -147,10 +165,12 @@ public class DoacoesTest {
 		doacao.setDataDoacao(stringToDate());
 		doacao.setInformacoes("test");
 		doacao.setTipoDeDoacao(TipoDoacao.DINHEIRO);
+		doacao.setStatus(StatusDoacao.PENDENTE_VIZUALISACAO);
 		doacao.setDoador(doadores);
 
 		doacaoDAO.salvar(doacao);
 		
+		//Testa se está sendo listada as doações de uma campanha selecionada
 		doacaoDAO.buscaDoacaoPorCampanha(campanha);
 	}
 

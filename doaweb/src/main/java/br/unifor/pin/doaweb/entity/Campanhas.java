@@ -41,7 +41,7 @@ public class Campanhas {
 	@Enumerated(EnumType.ORDINAL)
 	private TipoDoacao tipo;
 	
-	@Column(name = "status_campanha", nullable = false)
+	@Column(name = "status_campanha")
 	@Enumerated(EnumType.ORDINAL)
 	private StatusCampanha status;
 

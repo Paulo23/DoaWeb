@@ -69,7 +69,14 @@ public class CampanhaBO {
 	}
 	
 	public boolean  validaDataDeTerminoDeCampanha(Date date){
-		return new Date().after(date);
+		Date date2 = new Date();
+		System.out.println(date2);
+		System.out.println(date);
+		if (date2.before(date) && !(date2.equals(date))) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public Date dataSistema(){
