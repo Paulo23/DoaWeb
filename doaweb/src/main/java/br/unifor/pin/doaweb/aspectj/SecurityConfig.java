@@ -4,6 +4,9 @@
 package br.unifor.pin.doaweb.aspectj;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +17,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.unifor.pin.doaweb.entity.Doadores;
+import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.enums.TipoUsuario;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 
 /**
@@ -52,52 +58,43 @@ public class SecurityConfig {
 		LOG.debug(SECURITY_TAG + "Funcionalidade acessada: "
 				+ joinPoint.getSignature());
 
-		//Se o usuario por Administrador, libera todos os acessos
-//		for (Papeis papel : usuario.getPapeis()) {
-//			if (papel.getNome().equals("Administrador")) {
-//				return;
-//			}
-//		}
+		RolesAllowed permissoesDoMetodo = metodo
+				.getAnnotation(RolesAllowed.class) != null ? metodo
+				.getAnnotation(RolesAllowed.class) : metodo.getDeclaringClass()
+				.getAnnotation(RolesAllowed.class);
+				
+		if(permissoesDoMetodo != null){
+			final List<TipoUsuario> permissoesRequeridas = new ArrayList<TipoUsuario>(Arrays.asList(permissoesDoMetodo.value()));
+			final TipoUsuario permissaoDoUsuario = this.retornaPermissaoDoUsuario(usuario);
 
-//		RolesAllowed permissoesDoMetodo = metodo
-//				.getAnnotation(RolesAllowed.class) != null ? metodo
-//				.getAnnotation(RolesAllowed.class) : metodo.getDeclaringClass()
-//				.getAnnotation(RolesAllowed.class);
-//				
-//		if(permissoesDoMetodo != null){
-//			final List<String> permissoesRequeridas = new ArrayList<String>(Arrays.asList(permissoesDoMetodo.value()));
-//			final List<String> permissoesDoUsuario = this.retornaPermissoesDoUsuario(usuario);
-//			//interseccao entre as listas
-//			permissoesRequeridas.retainAll(permissoesDoUsuario);
-//			if(permissoesRequeridas.size() > 0){
-//				return;
-//			}
-//		} else {
-//			this.dispararAcessoNegado();
-//		}
+			if(permissoesRequeridas.contains(permissaoDoUsuario)){
+				return;
+			}
+		} else {
+			this.dispararAcessoNegado();
+		}
 
 	}
 
-//	/**
-//	 * @param usuario
-//	 * @return Lista de permissoes do usuario
-//	 */
-//	private List<String> retornaPermissoesDoUsuario(Usuarios usuario) {
-//		List<String> permissoesDoUsuario = new ArrayList<String>();
-////		for (Papeis papel : usuario.getPapeis()) {
-////			for (Permissoes permissao : papel.getPermissoes()) {
-////				permissoesDoUsuario.add(permissao.getPermissao());
-////			}
-////		}
-//		return permissoesDoUsuario;
-//	}
+	/**
+	 * @param usuario
+	 * @return A permissao do usuario
+	 */
+	private TipoUsuario retornaPermissaoDoUsuario(Usuarios usuario) {
+		if(usuario instanceof Doadores){
+			return TipoUsuario.DOADOR;
+		} else if (usuario instanceof Instituicoes) {
+			return TipoUsuario.INSTITUICAO;
+		}
+		return null;
+	}
 
 	/**
 	 * 
 	 */
 	private void dispararAcessoNegado() {
 		SecurityException se = new SecurityException(SECURITY_TAG + "Capturada uma tentativa de acesso indevido. Tentativa abortada.");
-		LOG.debug(SECURITY_TAG + "Capturada uma tentativa de acesso indevido. Tentativa abortada.", se);
+		LOG.error(SECURITY_TAG + "Capturada uma tentativa de acesso indevido. Tentativa abortada.", se);
 
 		throw se;
 	}

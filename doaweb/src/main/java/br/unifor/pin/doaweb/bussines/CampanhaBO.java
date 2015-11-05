@@ -12,11 +12,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
+import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
 import br.unifor.pin.doaweb.enums.StatusCampanha;
+import br.unifor.pin.doaweb.enums.TipoUsuario;
 
 @Component
 public class CampanhaBO {
@@ -24,10 +26,12 @@ public class CampanhaBO {
 	@Autowired
 	private CampanhasDAO campanhasDAO;
 
+	@RolesAllowed(value=TipoUsuario.INSTITUICAO)
 	public void salvar(Campanhas campanha) {
 		campanhasDAO.salvar(campanha);
 	}
 
+	@RolesAllowed(value=TipoUsuario.INSTITUICAO)
 	public void atualizarCampanha(Campanhas campanha) {
 		campanhasDAO.atualizar(campanha);
 	}

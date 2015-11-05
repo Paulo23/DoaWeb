@@ -31,7 +31,7 @@
 					action="/pages/doador/atualizarDoador.xhtml" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/doador/excDoador.xhtml" />
-				<p:menuitem value="Sair da Conta" action="/pages/login/login.xhtml" />
+				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />
 			</p:submenu>
 
 			<p:submenu label="Início"
@@ -52,7 +52,7 @@
 					action="/pages/instituicao/atualizarInstituicao.xhtml" />
 				<p:menuitem value="Excluir Conta"
 					action="/pages/usuario/excUsuario.xhtml" />
-				<p:menuitem value="Sair da Conta" action="/pages/login/login.xhtml" />
+				<p:menuitem value="Sair da Conta" action="#{segurancaTO.logout}" />
 			</p:submenu>
 		</p:panelMenu>
 

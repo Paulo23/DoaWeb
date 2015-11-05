@@ -17,7 +17,7 @@ public class Navigation {
 	public static final String LISTDOACDOAD = "listaDoacDoad";
 	
 	public static final String LISTDOANACAMP = "listaDoaNaCamp";
-
-
+	
+	public static final String SAIR = "sair";
 
 }

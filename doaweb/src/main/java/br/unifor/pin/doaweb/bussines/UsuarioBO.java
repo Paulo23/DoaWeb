@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
 import br.unifor.pin.doaweb.aspectj.PermitAll;
-import br.unifor.pin.doaweb.aspectj.RolesAllowed;
 import br.unifor.pin.doaweb.dao.DoadoresDAO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
 import br.unifor.pin.doaweb.entity.Doadores;
@@ -65,7 +64,6 @@ public class UsuarioBO {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	@RolesAllowed(value = { "EXCLUIR_USUARIO" })
 	public void excluirUsuario(Usuarios usuario) {
 		try {
 			usuario = usuarioDAO.buscaPorId(usuario.getId());
