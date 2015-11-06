@@ -14,53 +14,53 @@
 				<p:messages id="messages" showDetail="true" autoUpdate="true"
 					closable="true" />
 			</h:panelGrid>
-			
-			
-			<p:calendar value="#{listCampanha.dataInicioFiltro}" mask="99/99/9999" />
-			<h:commandButton value="Filtrar" action="#{listCampanha.listarMinhasCampanhasPorFiltro}" />
-				<!-- Tabela campanhas -->
 
-				<h:panelGrid columns="3" styleClass="panelgrid">
 
-					<p:dataTable id="listaCampanhas"
-						value="#{listCampanha.ltCampanhas}" var="campanhas"
-						paginator="true" paginatorPosition="bottom" rows="5"
-						emptyMessage="Nenhum resultado encontrado" >
+			<!-- Tabela campanhas -->
 
-						<p:column headerText="Início da Campanha" styleClass="text-center" width="20%">
-							<h:outputText value="#{campanhas.dataInicioCampanhas}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-						<p:column headerText="Fim da Campanha" styleClass="text-center" width="20%">
-							<h:outputText value="#{campanhas.dataTerminoCampanhas}">
-								<f:convertDateTime pattern="dd/MM/yyyy"/>
-							</h:outputText>
-						</p:column>
-						<p:column headerText="Tipo de Campanha" styleClass="text-center" width="20%">
-							<h:outputText value="#{campanhas.tipo}"/>
-						</p:column>
+			<h:panelGrid columns="3" styleClass="panelgrid">
+					<!--  -->
+				<p:dataTable id="listaCampanhas" value="#{listCampanha.ltCampanhas}"
+					var="campanhas" paginator="true" paginatorPosition="bottom"
+					rows="5" emptyMessage="Nenhum resultado encontrado">
 
-						<p:column id="clExcluir" style="width: 43px; text-align: center"
-							resizable="false" headerText="Excluir Doações">
-							<p:commandButton id="btExcluir" icon="ui-icon-closethick"
-								title="Excluir"
-								actionListener="#{listCampanha.excluir(campanhas)}"
-								update="listaCampanhas"
-								onclick="if (!confirm('Excluir campanha?')) return false" />
-						</p:column>
-						
-						<p:column id="clVisualizar" style="width: 43px; text-align: center"
-							resizable="false" headerText="Visualizar Doações">
-							<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
-								title="Doacões"
-								action="#{listCampanha.listarDoacaoesNaCampanha(campanhas)}"/>
-						</p:column>
+					<p:column headerText="Tipo de Campanha" styleClass="text-center"
+						width="20%">
+						<h:outputText value="#{campanhas.tipo}" />
+					</p:column>
+					<p:column headerText="Início da Campanha" styleClass="text-center"
+						width="20%">
+						<h:outputText value="#{campanhas.dataInicioCampanhas}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Fim da Campanha" styleClass="text-center"
+						width="20%">
+						<h:outputText value="#{campanhas.dataTerminoCampanhas}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
 
-					</p:dataTable>
 
-				</h:panelGrid>
-			
+					<p:column id="clExcluir" style="width: 43px; text-align: center"
+						resizable="false" headerText="Excluir Doações">
+						<p:commandButton id="btExcluir" icon="ui-icon-closethick"
+							title="Excluir"
+							actionListener="#{listCampanha.excluir(campanhas)}"
+							update="listaCampanhas"
+							onclick="if (!confirm('Excluir campanha?')) return false" />
+					</p:column>
+
+					<p:column id="clVisualizar" style="width: 43px; text-align: center"
+						resizable="false" headerText="Visualizar Doações">
+						<p:commandButton id="btVzlDoac" icon="fa-eye" title="Doacões"
+							action="#{listCampanha.listarDoacaoesNaCampanha(campanhas)}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
 		</h:form>
 	</ui:define>
 </ui:composition>
