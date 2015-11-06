@@ -57,6 +57,7 @@ public class SecurityFilter implements Filter {
 		
 		try {
 			chain.doFilter(request, response);
+			return;
 		} catch (ServletException ex) {
 
 			SecurityException rootCause = getSecurityCause(ex);
