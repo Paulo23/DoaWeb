@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.aspectj.Loggable;
+import br.unifor.pin.doaweb.aspectj.PermitAll;
 import br.unifor.pin.doaweb.dao.DoacaoDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
@@ -26,6 +27,12 @@ public class DoacaoBO {
 	@Loggable(enable = false)
 	public List<Doacao> buscarDoacPorDoad(Usuarios doador) {
 		return doacaoDAO.buscaDoacaoPorDoador(doador);
+	}
+	
+	@PermitAll
+	@Loggable(enable = false)
+	public List<Doacao> buscarDoacPorIdDoador(Integer id) {
+		return doacaoDAO.buscaDoacaoPorIdDoador(id);
 	}
 	
 	@Loggable(enable = false)
