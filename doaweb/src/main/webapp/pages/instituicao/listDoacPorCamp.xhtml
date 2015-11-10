@@ -24,25 +24,23 @@
 					var="doacao" paginator="true" paginatorPosition="bottom" rows="5"
 					emptyMessage="Nenhum resultado encontrado">
 
-					<p:column headerText="Doador" styleClass="text-center" width="25%">
-						<h:outputText value="#{doacao.doador.nome}"  styleClass="text-center"/>
-					</p:column>
-					<p:column headerText="Data da Doação" styleClass="text-center" width="15%">
+					
+					<p:column headerText="Data da Doação" styleClass="text-center" width="10%">
 						<h:outputText value="#{doacao.dataDoacao}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column headerText="Status" styleClass="text-center" width="10%">
-						<h:outputText value="#{doacao.informacoes}" />
+					<p:column headerText="Status" styleClass="text-center" width="13%">
+						<h:outputText value="#{doacao.status}" />
 					</p:column>
-					<p:column headerText="Tipo" styleClass="text-center" width="20%">
-						<h:outputText value="#{doacao.informacoes}" />
+					<p:column headerText="Tipo" styleClass="text-center" width="12%">
+						<h:outputText value="#{doacao.tipoDeDoacao}" />
 					</p:column>
 					<p:column id="clVisualizar" style="width: 43px; text-align: center" 
 							resizable="false" headerText="Visualizar Doação">
 							<p:commandButton id="btVzlDoac" icon="fa-icon fa-eye"
 								title="Doacões"
-								action="#{listCampanha.listarDoacaoesNaCampanha(doacao)}"/>
+								action="#{listCampanha.dadosDaDoacao()}"/>
 						</p:column>
 					
 

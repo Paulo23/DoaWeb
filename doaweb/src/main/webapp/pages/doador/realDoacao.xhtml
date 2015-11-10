@@ -26,10 +26,8 @@
 						paginator="true" paginatorPosition="bottom" rows="5"
 						emptyMessage="Nenhum resultado encontrado">
 
-						<p:column headerText="Início da Campanha" styleClass="text-center">
-							<h:outputText value="#{campanha.dataInicioCampanhas}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
+						<p:column headerText="Status da Campanha" styleClass="text-center">
+							<h:outputText value="#{campanha.status}" />
 						</p:column>
 						<p:column headerText="Fim da Campanha" styleClass="text-center">
 							<h:outputText value="#{campanha.dataTerminoCampanhas}">
@@ -37,9 +35,6 @@
 							</h:outputText>
 						</p:column>
 						<p:column headerText="Tipo de Campanha" styleClass="text-center">
-							<h:outputText value="#{campanha.tipo}" />
-						</p:column>
-						<p:column headerText="Status da Campanha" styleClass="text-center">
 							<h:outputText value="#{campanha.tipo}" />
 						</p:column>
 

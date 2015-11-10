@@ -13,6 +13,7 @@ import br.unifor.pin.doaweb.bussines.DoacaoBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Doadores;
+import br.unifor.pin.doaweb.enums.StatusDoacao;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
@@ -34,13 +35,12 @@ public class RealDoacaoManager {
 	private String nomeInstituicao;
 	private String descricao;
 	private String tipo;
-	private String obs;
+	
 	private Double valorDac;
+	private String obs;
 
 	private Campanhas campanhas;
-
 	private Campanhas camps;
-
 	private List<Campanhas> ltTodasCampanhas;
 
 	public String listarTodasCampanhas() {
@@ -64,19 +64,20 @@ public class RealDoacaoManager {
 		doacao.setDataDoacao(getCamps().getDataInicioCampanhas());
 		doacao.setTipoDeDoacao(getCamps().getTipo());
 		doacao.setValor(getValorDac());
-		//	doacao.setInformacoes(descricao);
-
+		doacao.setInformacoes(getObs());
+		doacao.setStatus(StatusDoacao.PENDENTE_VIZUALISACAO);
 
 		try {
 			this.doacaoBO.salvar(doacao);
+			limpaDados();
 			MessagesUtils.info("Doação realizada com sucesso");
 		} catch (Exception e) {
 			MessagesUtils.error(e.getMessage());
 		}
-
 	}
 
-	public void voltar() {
+	public void limpaDados() {
+		this.obs = "";
 	}
 
 	public List<Campanhas> getLtTodasCampanhas() {

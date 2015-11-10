@@ -30,7 +30,11 @@
 					<p:outputLabel id="tip" value="#{realizarDoac.tipo}" />
 					<p:outputLabel id="descricao" value="Descrição: " />
 					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
-					<p:outputLabel id="obsvs" value="Observações: " />
+					<p:outputLabel value="Informações extras: " />
+					<font color="red">*</font>
+					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50" counter="display"
+						maxlength="250" counterTemplate="{0} characters remaining." />
+					<h:outputText id="display" />
 					<!--  	<p:inputText id="obs" value="#{realizarDoac.obs} " /> -->
 
 				</h:panelGrid>

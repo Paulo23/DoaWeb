@@ -27,7 +27,7 @@ public class AtualizaUsuarioManager {
 	
 	
 	public String preparaAtualizar() {
-		//usuarioSelecionado = this.segurancaTO.getUsuario();
+		usuarioSelecionado = this.segurancaTO.getUsuario();
 
 		return Navigation.ATUALIZA;
 	}

@@ -20,4 +20,8 @@ public class Navigation {
 	
 	public static final String SAIR = "sair";
 
+	
+	public static final String CADASTROCAMP = "cadastroCamp";
+	public static final String DADOSDADOAC = "dadosDaDoac";
+
 }

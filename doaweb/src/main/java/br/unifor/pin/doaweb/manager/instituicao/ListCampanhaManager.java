@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.bussines.DoacaoBO;
+import br.unifor.pin.doaweb.dao.CampanhasDAO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Doacao;
 import br.unifor.pin.doaweb.entity.Instituicoes;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Navigation;
 
@@ -24,6 +26,9 @@ public class ListCampanhaManager {
 
 	@Autowired
 	private CampanhaBO campanhaBO;
+	
+	@Autowired
+	private CampanhasDAO campanhasDAO;
 
 	@Autowired
 	private DoacaoBO doacaoBO;
@@ -45,9 +50,26 @@ public class ListCampanhaManager {
 		return Navigation.LISTCAMPINST;
 	}
 
+	public void setStatusCampanhas() {
+		Date atual = new Date();
+		for (int i = 0; i < campanhasDAO.buscaTodasCampanhas().size(); i++) {
+			if (campanhasDAO.buscaTodasCampanhas().get(i)
+					.getDataTerminoCampanhas().after(atual)) {
+				Campanhas camp = campanhasDAO.buscaTodasCampanhas().get(i);
+				camp.setStatus(StatusCampanha.INATIVA);
+				campanhasDAO.atualizar(camp);
+			}
+		}
+		}
+	
 	public String listarMinhasCampanhas() {
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
+		setStatusCampanhas();
 		return Navigation.LISTCAMPINST;
+	}
+	
+	public String dadosDaDoacao(){
+		return Navigation.DADOSDADOAC;
 	}
 
 	public String listarNaCampanha() {

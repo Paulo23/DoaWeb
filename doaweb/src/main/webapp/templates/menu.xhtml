@@ -42,7 +42,7 @@
 			<p:submenu label="Campanha"
 				rendered="#{segurancaTO.tipoUsuario == 'INSTITUICAO'}">
 				<p:menuitem value="Nova Campanha"
-					action="/pages/instituicao/cadCampanha.xhtml" />
+					action="#{cadCampanha.preparaSalvar()}" />
 				<p:menuitem value="Minhas Campanhas"
 					action="#{listCampanha.listarMinhasCampanhas}" />
 			</p:submenu>

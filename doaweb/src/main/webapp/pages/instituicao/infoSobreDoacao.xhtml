@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form id="formInfoInst">
+
+
+
+				<h2>Dados da doação</h2>
+				<br />
+				<h:panelGrid>
+					<p:messages id="messagesInst" showDetail="true" autoUpdate="true"
+						closable="true" />
+				</h:panelGrid>
+
+				<p:outputLabel id="razaoLb" value="Razão Social: " />
+				<p:outputLabel id="razao" value="#{login.instituicao.razaoSocial}" />
+				<p:outputLabel id="cnpjLb" value="CNPJ: " />
+				<p:outputLabel id="cnpj" value="#{login.instituicao.cnpj}" />
+				<p:outputLabel id="endLb" value="Endereço: " />
+				<p:outputLabel id="end" value="#{login.instituicao.endereco}" />
+				<p:outputLabel id="telLb" value="Telefone: " />
+				<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
+				<p:outputLabel id="descLb" value="Descrição: " />
+				<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

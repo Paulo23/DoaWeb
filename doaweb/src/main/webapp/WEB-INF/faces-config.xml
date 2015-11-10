@@ -40,7 +40,15 @@
 			<to-view-id>/pages/instituicao/listDoacPorCamp.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+	
+	<navigation-rule>
+		<from-view-id>/pages/instituicao/listDoacPorCamp.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>dadosDaDoac</from-outcome>
+			<to-view-id>/pages/instituicao/infoSobreDoacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/pages/instituicao/excInstituicao.xhtml</from-view-id>
 		<navigation-case>
@@ -71,6 +79,10 @@
 		<navigation-case>
 			<from-outcome>listaCampInst</from-outcome>
 			<to-view-id>/pages/instituicao/listCampanhas.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroCamp</from-outcome>
+			<to-view-id>/pages/instituicao/cadCampanha.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>listaDoacDoad</from-outcome>

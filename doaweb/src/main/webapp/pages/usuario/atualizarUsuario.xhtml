@@ -11,7 +11,7 @@
 				<h2>Atualizar Usuário</h2>
 				<p:separator />
 				<br />
-				
+
 				<h:panelGrid id="gridDoador" columns="4" styleClass="panelgrid"
 					rendered="#{cadUsuario.tipoUsuario == 'DOADOR'}">
 
@@ -33,6 +33,17 @@
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="email" />
 
+					<br />
+					<h:panelGrid columns="3" styleClass="panelgrid">
+						<p:commandButton value="Voltar"
+							action="#{atualizaUsuario.preparaListar}" ajax="false"
+							immediate="true" />
+						<p:commandButton value="Atualizar"
+							action="#{atualizaUsuario.limparDados}" ajax="false" />
+						<p:commandButton value="Limpar"
+							actionListener="#{atualizaUsuario.limparDados}" update="@form"
+							type="reset" />
+					</h:panelGrid>
 				</h:panelGrid>
 
 				<h:panelGrid id="gridInstituicao" columns="4" styleClass="panelgrid"
@@ -62,21 +73,20 @@
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="descricao" />
 
+					<br />
+					<h:panelGrid columns="3" styleClass="panelgrid">
+						<p:commandButton value="Voltar"
+							action="#{atualizaUsuario.preparaListar}" ajax="false"
+							immediate="true" />
+						<p:commandButton value="Atualizar"
+							action="#{atualizaUsuario.limparDados}" ajax="false" />
+						<p:commandButton value="Limpar"
+							actionListener="#{atualizaUsuario.limparDados}" update="@form"
+							type="reset" />
+					</h:panelGrid>
 				</h:panelGrid>
 
 
-				
-				<br />
-				<h:panelGrid columns="3" styleClass="panelgrid">
-					<p:commandButton value="Voltar"
-						action="#{atualizaUsuario.preparaListar}" ajax="false"
-						immediate="true" />
-					<p:commandButton value="Atualizar"
-						action="#{atualizaUsuario.limparDados}" ajax="false" />
-					<p:commandButton value="Limpar"
-						actionListener="#{atualizaUsuario.limparDados}" update="@form"
-						type="reset" />
-				</h:panelGrid>
 			</f:validateBean>
 		</h:form>
 	</ui:define>

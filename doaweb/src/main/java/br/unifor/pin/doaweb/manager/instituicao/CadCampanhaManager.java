@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.doaweb.bussines.CampanhaBO;
 import br.unifor.pin.doaweb.entity.Campanhas;
 import br.unifor.pin.doaweb.entity.Instituicoes;
+import br.unifor.pin.doaweb.enums.StatusCampanha;
 import br.unifor.pin.doaweb.enums.TipoDoacao;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
@@ -30,15 +31,19 @@ public class CadCampanhaManager {
 	private Date dataTerminoCampanhas;
 	private TipoDoacao tipo;
 	private String descricao;
+	private StatusCampanha statusCampanha;
 	private Instituicoes instituicao;
 
-	public String salvar() {
+	public void salvar() {
 		Campanhas campanha = new Campanhas();
-		campanha.setDataInicioCampanhas(getDataInicioCampanhas());
+		campanha.setDataInicioCampanhas(new Date());
 		campanha.setDataTerminoCampanhas(getDataTerminoCampanhas());
 		campanha.setDescricao(getDescricao());
 		campanha.setInstituicao((Instituicoes)segurancaTO.getUsuario());
 		campanha.setTipo(getTipo());
+		campanha.setStatus(StatusCampanha.ATIVA);
+		
+		if(validarDataFinal(getDataTerminoCampanhas()) ==  true){			
 		
 		try {
 			this.campanhaBO.salvar(campanha);
@@ -48,16 +53,29 @@ public class CadCampanhaManager {
 			MessagesUtils.error(e.getMessage());
 		}
 
-		return Navigation.VOLTAR;
+		}else{
+			MessagesUtils.error("Data de ENCERRAMENTO deve ser posterior a data de INÍCIO, insira uma data correta!");
+		}
+		
 	}
 	
 	public String preparaSalvar(){
 		this.limpaDados();
-		return Navigation.CADASTRO;
+		this.dataInicioCampanhas = new Date();
+		return Navigation.CADASTROCAMP;
+	}
+	
+	public Date insereDataInicio(){
+		
+		return campanhaBO.dataSistema();
+	}
+	
+	public boolean validarDataFinal(Date date){
+		return campanhaBO.validaDataDeTerminoDeCampanha(date);
 	}
 	
 	public void limpaDados() {
-		this.dataInicioCampanhas = null;
+		//this.dataInicioCampanhas = null;
 		this.dataTerminoCampanhas = null;
 		this.descricao = "";
 	}
@@ -66,6 +84,10 @@ public class CadCampanhaManager {
 	public TipoDoacao[] getTipoDoacaoValores() {
 	    return TipoDoacao.values();
 	  }
+	
+	
+	
+	
 
 	public CampanhaBO getCampanhaBO() {
 		return campanhaBO;
@@ -115,4 +137,14 @@ public class CadCampanhaManager {
 		this.instituicao = instituicao;
 	}
 
+	public StatusCampanha getStatusCampanha() {
+		return statusCampanha;
+	}
+
+	public void setStatusCampanha(StatusCampanha statusCampanha) {
+		this.statusCampanha = statusCampanha;
+	}
+
+	
+	
 }
