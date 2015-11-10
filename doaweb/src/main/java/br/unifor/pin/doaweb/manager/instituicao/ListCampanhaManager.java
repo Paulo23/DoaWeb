@@ -26,30 +26,40 @@ public class ListCampanhaManager {
 
 	@Autowired
 	private CampanhaBO campanhaBO;
-	
 	@Autowired
 	private CampanhasDAO campanhasDAO;
-
 	@Autowired
 	private DoacaoBO doacaoBO;
-
 	@Autowired
 	private SegurancaTO segurancaTO;
 
-	private List<Campanhas> ltCampanhas;
-
-	private List<Doacao> ltDoacoes;
-
 	private Date dataInicioFiltro;
-
 	private Campanhas campanha;
 
+	private List<Campanhas> ltCampanhas;
+	private List<Doacao> ltDoacoes;
+
+	//Filtro de data
 	public String listarMinhasCampanhasPorFiltro() {
 		ltCampanhas = campanhaBO.buscaCampanhasPorInstituicaoData(
 				(Instituicoes) segurancaTO.getUsuario(), dataInicioFiltro);
 		return Navigation.LISTCAMPINST;
 	}
-
+	
+	//Lista as doação que a Campanha possui
+	public String listarDoacaoesNaCampanha(Campanhas doaCamp) {
+		ltDoacoes = doacaoBO.buscarDoacPorCamp(doaCamp);
+		return Navigation.LISTDOANACAMP;
+	}
+	
+	//Lista as campanhas da Instituição e atualiza o status da campanha
+	public String listarMinhasCampanhas() {
+		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
+		setStatusCampanhas();
+		return Navigation.LISTCAMPINST;
+	}
+	
+	//atualiza o status da Campanha
 	public void setStatusCampanhas() {
 		Date atual = new Date();
 		for (int i = 0; i < campanhasDAO.buscaTodasCampanhas().size(); i++) {
@@ -60,31 +70,18 @@ public class ListCampanhaManager {
 				campanhasDAO.atualizar(camp);
 			}
 		}
-		}
-	
-	public String listarMinhasCampanhas() {
-		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
-		setStatusCampanhas();
-		return Navigation.LISTCAMPINST;
 	}
 	
-	public String dadosDaDoacao(){
+	//Direcioana para página que mostrará detalhes da doação
+	public String dadosDaDoacao() {
 		return Navigation.DADOSDADOAC;
 	}
-
-	public String listarNaCampanha() {
-		return Navigation.LISTDOANACAMP;
-	}
-
-	public String listarDoacaoesNaCampanha(Campanhas doaCamp) {
-		ltDoacoes = doacaoBO.buscarDoacPorCamp(doaCamp);
-		return Navigation.LISTDOANACAMP;
-	}
-
+	
+	//Exclui uma Campanha
 	public void excluir(Campanhas campanha) {
 		campanhaBO.excluirCampanha(campanha);
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
-	}
+	}	
 
 	public List<Campanhas> getLtCampanhas() {
 		return ltCampanhas;

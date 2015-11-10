@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("1")
 public class Instituicoes extends Usuarios {
 	
-	@Column(name="cnpj_instituicao", nullable = false, length = 14, unique = true)
+	@Column(name="cnpj_instituicao", nullable = false, length = 18, unique = true)
 	private String cnpj;
 	
 	@Column(name="razao_social", nullable = false)
