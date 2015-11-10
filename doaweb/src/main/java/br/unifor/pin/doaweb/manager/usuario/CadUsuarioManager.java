@@ -104,10 +104,24 @@ public class CadUsuarioManager {
 	}
 
 	public void limpaDados() {
-		this.nome = "";
 		this.email = "";
 		this.senha = "";
-		this.tipoUsuario = null;
+		this.endereco = "";
+
+		this.nome = "";
+		this.cpf = "";
+		this.telDoador = "";
+		this.dataNascimento = null;
+		
+		this.razaoSocial = "";
+		this.cnpj = "";
+		this.tel = "";
+		this.nomeBanco = "";
+		this.operacao = "";
+		this.agencia = "";
+		this.conta = "";
+		this.descricao = "";
+
 	}
 
 	public String getNome() {

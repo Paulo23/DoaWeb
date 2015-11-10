@@ -35,9 +35,14 @@ public class RealDoacaoManager {
 	private String nomeInstituicao;
 	private String descricao;
 	private String tipo;
+	private String obs;
+
+	private String nomeBanco;
+	private String ag;
+	private String op;
+	private String conta;
 	
 	private Double valorDac;
-	private String obs;
 
 	private Campanhas campanhas;
 	private Campanhas camps;
@@ -52,6 +57,12 @@ public class RealDoacaoManager {
 		nomeInstituicao = camp.getInstituicao().getRazaoSocial();
 		descricao = camp.getDescricao();
 		tipo = camp.getTipo().toString();
+		
+		nomeBanco = camp.getInstituicao().getNomeBanco();
+		ag = camp.getInstituicao().getAgencia();
+		op = camp.getInstituicao().getOperacao();
+		conta = camp.getInstituicao().getConta();
+		
 		setCamps(camp);
 		return Navigation.SUCESSO;
 	}
@@ -74,6 +85,11 @@ public class RealDoacaoManager {
 		} catch (Exception e) {
 			MessagesUtils.error(e.getMessage());
 		}
+	}
+	
+	public String voltar(){
+		this.obs = "";
+		return Navigation.VOLTAR;
 	}
 
 	public void limpaDados() {
@@ -142,6 +158,38 @@ public class RealDoacaoManager {
 
 	public void setValorDac(Double valorDac) {
 		this.valorDac = valorDac;
+	}
+
+	public String getNomeBanco() {
+		return nomeBanco;
+	}
+
+	public void setNomeBanco(String nomeBanco) {
+		this.nomeBanco = nomeBanco;
+	}
+
+	public String getAg() {
+		return ag;
+	}
+
+	public void setAg(String ag) {
+		this.ag = ag;
+	}
+
+	public String getOp() {
+		return op;
+	}
+
+	public void setOp(String op) {
+		this.op = op;
+	}
+
+	public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
 	}
 	
 	

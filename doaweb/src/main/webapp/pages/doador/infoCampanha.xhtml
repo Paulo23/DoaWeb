@@ -21,8 +21,7 @@
 
 				<h:panelGrid columns="2" styleClass="panelgrid">
 
-					<p:inputText id="valorDoacao" value="#{realizarDoac.valorDac}"
-						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+
 
 					<p:outputLabel id="nomeInst" value="Nome da Instituição: " />
 					<p:outputLabel id="nome" value="#{realizarDoac.nomeInstituicao}" />
@@ -30,11 +29,25 @@
 					<p:outputLabel id="tip" value="#{realizarDoac.tipo}" />
 					<p:outputLabel id="descricao" value="Descrição: " />
 					<p:outputLabel id="desc" value="#{realizarDoac.descricao}" />
+					<!-- DADOS DO BANCO -->
+					<p:outputLabel id="nomeBancoInst" value="Nome do Banco: " rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="nbi" value="#{realizarDoac.nomeBanco}" rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="agBancoInst" value="Agência: " rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="abi" value="#{realizarDoac.ag}" rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="contaBancoInst" value="Conta: " rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="cbi" value="#{realizarDoac.conta}" rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="opBancoInst" value="Nome do Banco " rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+					<p:outputLabel id="obi" value="#{realizarDoac.op}" rendered="#{realizarDoac.tipo =='DINHEIRO'}"/>
+										
 					<p:outputLabel value="Informações extras: " />
-					<font color="red">*</font>
-					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50" counter="display"
-						maxlength="250" counterTemplate="{0} characters remaining." />
+					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50"
+						maxlength="250" />
 					<h:outputText id="display" />
+
+					
+					<p:inputText id="valorDoacao" value="#{realizarDoac.valorDac}"
+						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
+
 					<!--  	<p:inputText id="obs" value="#{realizarDoac.obs} " /> -->
 
 				</h:panelGrid>
