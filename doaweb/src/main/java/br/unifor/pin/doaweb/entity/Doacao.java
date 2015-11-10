@@ -35,9 +35,6 @@ public class Doacao {
 	
 	@Column(name = "inf_doacao")
 	private String informacoes;
-	
-	@Column(name = "valor")
-	private Double valor;
 
 	@Column(name = "status_doacao")
 	@Enumerated(EnumType.ORDINAL)
@@ -97,14 +94,6 @@ public class Doacao {
 
 	public void setInformacoes(String informacoes) {
 		this.informacoes = informacoes;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
 	}
 
 	public StatusDoacao getStatus() {

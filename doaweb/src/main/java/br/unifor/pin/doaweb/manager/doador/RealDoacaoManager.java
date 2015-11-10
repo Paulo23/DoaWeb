@@ -74,7 +74,6 @@ public class RealDoacaoManager {
 		doacao.setDoador((Doadores) segurancaTO.getUsuario());
 		doacao.setDataDoacao(getCamps().getDataInicioCampanhas());
 		doacao.setTipoDeDoacao(getCamps().getTipo());
-		doacao.setValor(getValorDac());
 		doacao.setInformacoes(getObs());
 		doacao.setStatus(StatusDoacao.PENDENTE_VIZUALISACAO);
 

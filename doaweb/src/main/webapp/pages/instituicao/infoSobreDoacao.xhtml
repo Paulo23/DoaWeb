@@ -14,21 +14,25 @@
 					closable="true" />
 			</h:panelGrid>
 
-			<p:outputLabel id="nomeDoador" value="Nome do doador: " />
-			<p:outputLabel id="razao" value="#{login.instituicao.razaoSocial}" />
-			
-			<p:outputLabel id="cpf" value="CPF: " />
-			<p:outputLabel id="cnpj" value="#{login.instituicao.cnpj}" />
-			
-			<p:outputLabel id="end" value="Endereço: " />
-			<p:outputLabel id="end" value="#{login.instituicao.endereco}" />
-			
-			<p:outputLabel id="Telefone:" value="Telefone: " />
-			<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
-			
-			<p:outputLabel id="obs" value="Observações: " />
-			<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+			<h:panelGrid columns="2" styleClass="panelgrid">
 
+
+				<p:outputLabel id="nomeDoador" value="Nome do doador: " />
+				<p:outputLabel id="razao" value="#{login.doador.nome}" />
+
+				<p:outputLabel id="cpf" value="CPF: " />
+				<p:outputLabel id="cnpj" value="#{login.doador.cpf}" />
+
+				<p:outputLabel id="end" value="Endereço: " />
+				<p:outputLabel id="ende" value="#{login.instituicao.endereco}" />
+
+				<p:outputLabel id="tele" value="Telefone: " />
+				<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
+
+				<p:outputLabel id="obs" value="Observações: " />
+				<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+
+			</h:panelGrid>
 
 		</h:form>
 	</ui:define>
