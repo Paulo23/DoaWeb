@@ -1,5 +1,7 @@
 package br.unifor.pin.doaweb.manager.instituicao;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,23 +56,11 @@ public class ListCampanhaManager {
 	
 	//Lista as campanhas da Instituição e atualiza o status da campanha
 	public String listarMinhasCampanhas() {
+		campanhaBO.setStatusCampanhas();
 		ltCampanhas = campanhaBO.buscarCampPorInst(segurancaTO.getUsuario());
-		setStatusCampanhas();
 		return Navigation.LISTCAMPINST;
 	}
 	
-	//atualiza o status da Campanha
-	public void setStatusCampanhas() {
-		Date atual = new Date();
-		for (int i = 0; i < campanhasDAO.buscaTodasCampanhas().size(); i++) {
-			if (campanhasDAO.buscaTodasCampanhas().get(i)
-					.getDataTerminoCampanhas().after(atual)) {
-				Campanhas camp = campanhasDAO.buscaTodasCampanhas().get(i);
-				camp.setStatus(StatusCampanha.INATIVA);
-				campanhasDAO.atualizar(camp);
-			}
-		}
-	}
 	
 	//Direcioana para página que mostrará detalhes da doação
 	public String dadosDaDoacao() {

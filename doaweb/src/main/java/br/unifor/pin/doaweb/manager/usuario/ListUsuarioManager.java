@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.exceptions.BOException;
+import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 /**
  * @author patrick.cunha
@@ -24,6 +26,7 @@ public class ListUsuarioManager {
 	private UsuarioBO usuarioBO;
 	private String nome;
 	private List<Usuarios> usuarios;
+	private Usuarios usuario;
 	
 	public void lista(){
 		
@@ -31,7 +34,13 @@ public class ListUsuarioManager {
 	}
 	
 	public void excluirUsuario(Usuarios usuario){
-		usuarioBO.excluirUsuario(usuario);
+		try {
+			usuarioBO.excluirUsuario(usuario);
+			MessagesUtils.info("Sua conta foi excluída.");
+		} catch (BOException e) {
+			MessagesUtils.error(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	public String preparaAtualizar(Usuarios usuario){
@@ -44,8 +53,7 @@ public class ListUsuarioManager {
 	}
 	
 	public void limparDados(){
-		this.nome = "";
-		this.usuarios = null;
+		
 	}
 	
 	

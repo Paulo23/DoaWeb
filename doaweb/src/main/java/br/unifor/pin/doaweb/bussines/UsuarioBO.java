@@ -43,8 +43,14 @@ public class UsuarioBO {
 	}
 
 	@Loggable(enable = false)
-	public Usuarios loggar(String email, String senha) {
-		return usuarioDAO.buscarPorEmailSenha(email, senha);
+	public Usuarios loggar(String email, String senha) throws BOException {
+		Usuarios usuario = usuarioDAO.buscarPorEmailSenha(email, senha);
+		if(usuario != null){
+			if(!usuario.isAtivo()){
+				throw new BOException("Sua conta está inativa, entre em contato para reativá-la.");
+			}
+		}
+		return usuario;
 	}
 
 	@Loggable(enable = false)
@@ -64,13 +70,14 @@ public class UsuarioBO {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void excluirUsuario(Usuarios usuario) {
+	public void excluirUsuario(Usuarios usuario) throws BOException {
 		try {
-			usuario = usuarioDAO.buscaPorId(usuario.getId());
-		} catch (DAOException e) {
+			usuario.setAtivo(false);
+			usuarioDAO.atualizar(usuario);
+		} catch (Exception e) {
 			e.printStackTrace();
+			throw new BOException("Não foi possível excluir sua conta.");
 		}
-		usuarioDAO.excluir(usuario);
 	}
 	
 

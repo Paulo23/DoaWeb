@@ -31,10 +31,6 @@ public class UsuariosDAO {
 		entityManager.merge(usuario);
 	}
 
-	public void excluir(Usuarios usuario) {
-		entityManager.remove(usuario);
-	}
-
 	public Usuarios buscarPorEmail(String email) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder

@@ -109,15 +109,16 @@
 						requiredMessage="Campo Obrigatório" />
 					<p:message for="tel" />
 
-					<p:outputLabel value="Descrição: " />
-					<font color="red">*</font>
+				</h:panelGrid>
 
-						<p:outputLabel value="Descrição: " />
-					<font color="red">*</font>
-					<p:inputTextarea value="#{cadUsuario.descricao}" rows="4" cols="50" counter="display"
-						maxlength="250" counterTemplate="{0} characters remaining." />
+				<h:panelGrid columns="1" styleClass="panelgrid"
+					rendered="#{cadUsuario.tipoUsuario == 'INSTITUICAO'}">
+					<p:outputLabel value="Descrição: " ><font color="red">*</font></p:outputLabel>
+					
+					<p:inputTextarea value="#{cadUsuario.descricao}" rows="4" cols="45"
+						counter="display" maxlength="250"
+						counterTemplate="{0} characters remaining." />
 					<h:outputText id="display" />
-
 				</h:panelGrid>
 
 				<h:panelGrid columns="1" styleClass="panelgrid"

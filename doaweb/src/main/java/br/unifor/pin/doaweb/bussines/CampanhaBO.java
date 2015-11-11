@@ -2,6 +2,7 @@ package br.unifor.pin.doaweb.bussines;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -89,14 +90,12 @@ public class CampanhaBO {
 	}
 
 	public void setStatusCampanhas() {
-		Date atual = new Date();
-		for (int i = 0; i < campanhasDAO.buscaTodasCampanhas().size(); i++) {
-			if (campanhasDAO.buscaTodasCampanhas().get(i)
-					.getDataTerminoCampanhas().after(atual)) {
-				Campanhas camp = campanhasDAO.buscaTodasCampanhas().get(i);
-				camp.setStatus(StatusCampanha.INATIVA);
-				campanhasDAO.atualizar(camp);
-			}
+		ArrayList<Campanhas> campanhas = (ArrayList<Campanhas>) campanhasDAO.buscaTodasCampanhas();
+		for (Campanhas campanha : campanhas) {
+			if(new Date().after(campanha.getDataTerminoCampanhas())){
+				campanha.setStatus(StatusCampanha.INATIVA);
+				campanhasDAO.atualizar(campanha);
+			} 
 		}
 	}
 

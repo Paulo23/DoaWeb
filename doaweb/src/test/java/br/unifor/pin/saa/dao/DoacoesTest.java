@@ -103,6 +103,8 @@ public class DoacoesTest {
 		//Tesste do DoacaoDao completo 100% de cobertura
 		Assert.assertNotNull(doacaoDAO.buscaDoacaoPorId(doacao.getId()));
 		
+		System.out.println(doacaoDAO.buscaDoacaoPorId(doacao.getId()).getDataDoacao());
+		
 		Assert.assertNotNull(doacaoDAO.buscaDoacaoPorDoador(doadores));
 		
 		doacao.setStatus(StatusDoacao.VIZUALISADA);
@@ -172,6 +174,8 @@ public class DoacoesTest {
 		
 		//Testa se está sendo listada as doações de uma campanha selecionada
 		doacaoDAO.buscaDoacaoPorCampanha(campanha);
+		
+		
 	}
 
 }

@@ -54,7 +54,7 @@ public class CadCampanhaManager {
 		}
 
 		}else{
-			MessagesUtils.error("Data de ENCERRAMENTO deve ser posterior a data de INÍCIO, insira uma data correta!");
+			MessagesUtils.error("Data de ENCERRAMENTO deve ser posterior a data ATUAL, insira uma data correta!");
 		}
 		
 	}

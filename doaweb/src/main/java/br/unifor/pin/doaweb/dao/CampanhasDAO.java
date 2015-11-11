@@ -36,7 +36,7 @@ public class CampanhasDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Campanhas> buscaCampanhasPorInstituicao(Usuarios instituicao) {
-		String jpql = "select u from Campanhas u where u.instituicao = :instituicao";
+		String jpql = "select u from Campanhas u where u.instituicao = :instituicao order by u.status, u.dataTerminoCampanhas";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("instituicao", instituicao);
 		return (List<Campanhas>) query.getResultList();

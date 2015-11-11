@@ -13,6 +13,7 @@ import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.entity.Doadores;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.to.SegurancaTO;
 import br.unifor.pin.doaweb.utils.Encripta;
 import br.unifor.pin.doaweb.utils.MessagesUtils;
@@ -38,9 +39,14 @@ public class LoginManager {
 	private boolean existsEmail;
 
 	public String loggar() {
-		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmail(),
-				Encripta.encripta(this.usuario.getSenha()));
-		this.usuario = new Usuarios();
+		Usuarios usuario = null;
+		try {
+			usuario = this.usuarioBO.loggar(this.usuario.getEmail(),
+					Encripta.encripta(this.usuario.getSenha()));
+		} catch (BOException e) {
+			MessagesUtils.error(e.getMessage());
+			return Navigation.FRACASSO;
+		}
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;

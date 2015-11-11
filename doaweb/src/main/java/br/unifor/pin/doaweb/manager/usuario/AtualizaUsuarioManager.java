@@ -6,10 +6,13 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.unifor.pin.doaweb.bussines.UsuarioBO;
 import br.unifor.pin.doaweb.dao.UsuariosDAO;
 import br.unifor.pin.doaweb.entity.Instituicoes;
 import br.unifor.pin.doaweb.entity.Usuarios;
+import br.unifor.pin.doaweb.exceptions.BOException;
 import br.unifor.pin.doaweb.to.SegurancaTO;
+import br.unifor.pin.doaweb.utils.MessagesUtils;
 import br.unifor.pin.doaweb.utils.Navigation;
 /**
  * @author patrick.cunha
@@ -21,7 +24,9 @@ import br.unifor.pin.doaweb.utils.Navigation;
 public class AtualizaUsuarioManager {
 
 	@Autowired
-	private UsuariosDAO usuariosDAO;
+	private UsuarioBO usuariosBO;
+	
+	@Autowired
 	private SegurancaTO segurancaTO;
 	private Usuarios usuarioSelecionado;
 	
@@ -38,8 +43,14 @@ public class AtualizaUsuarioManager {
 	}
 	
 	public String excluir(){
-		usuarioSelecionado = (Instituicoes) this.segurancaTO.getUsuario();
-		usuariosDAO.excluir(usuarioSelecionado);
+		try {
+			usuariosBO.excluirUsuario(this.segurancaTO.getUsuario());
+			MessagesUtils.info("Conta excluída com sucesso.");
+		} catch (BOException e) {
+			MessagesUtils.error(e.getMessage());
+			e.printStackTrace();
+			return Navigation.FRACASSO;
+		}
 		
 		return Navigation.EXCLUIR;
 	}
