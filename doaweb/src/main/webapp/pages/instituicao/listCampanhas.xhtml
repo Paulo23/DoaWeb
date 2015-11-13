@@ -33,24 +33,24 @@
 						<h:outputText value="#{campanhas.tipo}" />
 					</p:column>
 					<p:column headerText="Início da Campanha" styleClass="text-center"
-						width="20%">
+						width="18%">
 						<h:outputText value="#{campanhas.dataInicioCampanhas}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
 					<p:column headerText="Fim da Campanha" styleClass="text-center"
-						width="20%">
+						width="18%">
 						<h:outputText value="#{campanhas.dataTerminoCampanhas}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column headerText="Status" styleClass="text-center" width="10%">
+					<p:column headerText="Status" styleClass="text-center" width="7%">
 						<h:outputText value="#{campanhas.status}" />
 					</p:column>
 
 
 					<p:column id="clExcluir" style="width: 43px; text-align: center"
-						resizable="false" headerText="Excluir Doações">
+						resizable="false" headerText="Excluir Campanha">
 						<p:commandButton id="btExcluir" icon="ui-icon-closethick"
 							title="Excluir"
 							actionListener="#{listCampanha.excluir(campanhas)}"

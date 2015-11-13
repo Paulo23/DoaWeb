@@ -50,6 +50,9 @@
     ID="listarCampDoad::#pages#doador#realDoacao.xhtml" NAME="output3"
     PATH="/pages/doador/realDoacao.xhtml"
     TARGET="rules:#pages#doador#realDoacao.xhtml" TITLE="listarCampDoad" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sair::#pages#login#login.xhtml"
+    NAME="output4" PATH="/pages/login/login.xhtml"
+    TARGET="rules:#pages#login#login.xhtml" TITLE="sair" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#login#login.xhtml"
@@ -105,15 +108,6 @@
     TARGET="rules:#pages#doador#infoCampanha.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#pages#doador#excDoador.xhtml"
-  PATH="/pages/doador/excDoador.xhtml" SHAPE="96,625,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#pages#doador#excDoador.xhtml:0" NAME="item"
-   PATH="/pages/doador/excDoador.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="excluir::#pages#login#login.xhtml"
-    NAME="output" PATH="/pages/login/login.xhtml"
-    TARGET="rules:#pages#login#login.xhtml" TITLE="excluir" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#usuario#preparaAtualizarUsuario.xhtml"
   PATH="/pages/usuario/preparaAtualizarUsuario.xhtml" SHAPE="32,737,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM
@@ -142,6 +136,14 @@
   <PROCESS-ITEM ID="rules:#pages#instituicao#listDoacPorCamp.xhtml:0"
    NAME="item" PATH="/pages/instituicao/listDoacPorCamp.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#pages#instituicao#infoSobreDoacao.xhtml" NAME="output"
+    PATH="/pages/instituicao/infoSobreDoacao.xhtml"
+    TARGET="rules:#pages#instituicao#infoSobreDoacao.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#instituicao#listDoacPorCamp.xhtml:1"
+   NAME="item1" PATH="/pages/instituicao/listDoacPorCamp.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
     ID="dadosDaDoac::#pages#instituicao#infoSobreDoacao.xhtml"
     NAME="output" PATH="/pages/instituicao/infoSobreDoacao.xhtml"
     TARGET="rules:#pages#instituicao#infoSobreDoacao.xhtml"
@@ -154,4 +156,16 @@
   PATH="/pages/usuario/atualizarUsuario.xhtml" SHAPE="240,753,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#instituicao#infoSobreDoacao.xhtml"
   PATH="/pages/instituicao/infoSobreDoacao.xhtml" SHAPE="1008,193,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#usuario#excUsuario.xhtml"
+  PATH="/pages/usuario/excUsuario.xhtml" SHAPE="96,657,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#usuario#excUsuario.xhtml:0" NAME="item"
+   PATH="/pages/usuario/excUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="excluir::#pages#login#login.xhtml"
+    NAME="output" PATH="/pages/login/login.xhtml"
+    TARGET="rules:#pages#login#login.xhtml" TITLE="excluir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fracasso::#pages#usuario#excUsuario.xhtml"
+    NAME="output1" PATH="/pages/usuario/excUsuario.xhtml"
+    TARGET="rules:#pages#usuario#excUsuario.xhtml" TITLE="fracasso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

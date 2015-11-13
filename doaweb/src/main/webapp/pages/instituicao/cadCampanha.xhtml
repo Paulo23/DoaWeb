@@ -29,21 +29,29 @@
 					</p:selectOneMenu>
 
 					<!-- Datas -->
-
+					<p:outputLabel for="dataInicioCampanhas" value="Data de início" />
+					<font color="red">*</font>
+					<p:calendar id="dataInicioCampanhas"
+						value="#{cadCampanha.dataInicioCampanhas}" mask="99/99/9999"
+						showOn="button" pattern="dd/MM/yyyy" disabled="true" />
 					<br />
 					<p:outputLabel for="dataTerminoCampanhas"
-						value="Data Encerramento:" />
+						value="Data de encerramento:" />
 					<font color="red">*</font>
 					<p:calendar id="dataTerminoCampanhas"
 						value="#{cadCampanha.dataTerminoCampanhas}" mask="99/99/9999"
-						showOn="button" pattern="dd/MM/yyyy"/>
+						showOn="button" pattern="dd/MM/yyyy" />
 
-					<!-- InputText Descrição -->
+				</h:panelGrid>
 
+				<!-- InputText Descrição -->
+
+				<h:panelGrid id="gridDocaoDescr" columns="4" styleClass="panelgrid">
 					<p:outputLabel value="Descrição: " />
 					<font color="red">*</font>
-					<p:inputTextarea value="#{cadCampanha.descricao}" rows="4" cols="50" counter="display"
-						maxlength="250" counterTemplate="{0} characters remaining." />
+					<p:inputTextarea value="#{cadCampanha.descricao}" rows="4"
+						cols="50" counter="display" maxlength="250"
+						counterTemplate="{0} characters remaining." placeholder="Breve descrição sobre a campanha"/>
 					<h:outputText id="display" />
 
 				</h:panelGrid>

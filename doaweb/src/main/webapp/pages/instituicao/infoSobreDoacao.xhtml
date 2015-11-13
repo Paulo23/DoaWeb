@@ -18,19 +18,16 @@
 
 
 				<p:outputLabel id="nomeDoador" value="Nome do doador: " />
-				<p:outputLabel id="razao" value="#{login.doador.nome}" />
-
-				<p:outputLabel id="cpf" value="CPF: " />
-				<p:outputLabel id="cnpj" value="#{login.doador.cpf}" />
+				<p:outputLabel id="razao" value="#{listDoacReal.nomeDoador}" />
 
 				<p:outputLabel id="end" value="Endereço: " />
-				<p:outputLabel id="ende" value="#{login.instituicao.endereco}" />
+				<p:outputLabel id="ende" value="#{listDoacReal.endDoador}" />
 
 				<p:outputLabel id="tele" value="Telefone: " />
-				<p:outputLabel id="tel" value="#{login.instituicao.telefone}" />
+				<p:outputLabel id="tel" value="#{listDoacReal.telefoneDoador}" />
 
 				<p:outputLabel id="obs" value="Observações: " />
-				<p:outputLabel id="desc" value="#{login.instituicao.desc}" />
+				<p:outputLabel id="desc" value="#{listDoacReal.obsDoDoaodr}" />
 
 			</h:panelGrid>
 

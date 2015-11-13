@@ -48,9 +48,11 @@
 						rendered="#{realizarDoac.tipo =='DINHEIRO'}" />
 					<br/>
 					<p:outputLabel value="Informações extras: " />
+					
 					<p:inputTextarea value="#{realizarDoac.obs}" rows="4" cols="50"
-						maxlength="250" placeholder="Informe aqui detalhes da sua doação, ou informações que a instituição deverá saber." />
-					<h:outputText id="display"  maxlength="250" counterTemplate="{0} characters remaining." />
+						counter="display" maxlength="250"
+						counterTemplate="{0} characters remaining." placeholder="Informe aqui detalhes da sua doação, ou informações que a instituição deverá saber." />
+					<h:outputText id="display" />
 
 				</h:panelGrid>
 
